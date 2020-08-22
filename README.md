@@ -1,4 +1,4 @@
-Day1:请写出下面代码执行的的结果
+#Day1:请写出下面代码执行的的结果
 ```js
 console.log(1);
 setTimeout(() => {
@@ -73,7 +73,7 @@ node>=11:1 7 6 8 2 4 3 5 9 11 10 12
 
 
 
-Day2:写出执行结果
+#Day2:写出执行结果
 ```js
 function side(arr) {
   arr[0] = arr[2];
@@ -93,7 +93,7 @@ a(1, 1, 1);
 arguments 中 c 的值还是 1 不会变成 10，  
 因为 a 函数加了默认值，就按 ES 的方式解析，ES6 是有块级作用域的，所以 c 的值是不会改变的
 
-Day3:写出执行结果
+#Day3:写出执行结果
 ```js
 var min = Math.min();
 max = Math.max();
@@ -110,7 +110,7 @@ false
   - Math.min 的参数是 0 个或者多个，如果多个参数很容易理解，返回参数中最小的。如果没有参数，则返回 Infinity，无穷大。  
   - 而 Math.max 没有传递参数时返回的是-Infinity.所以输出 false  
 
-Day4:写出执行结果,并解释原因
+#Day4:写出执行结果,并解释原因
 ```js
 var a = 1;
 (function a () {
@@ -131,7 +131,7 @@ var a = 1;
 **解析**
 立即调用的函数表达式（IIFE） 有一个 自己独立的 作用域，如果函数名称与内部变量名称冲突，就会永远执行函数本身；所以上面的结果输出是函数本身；
 
-Day5:写出执行结果,并解释原因
+#Day5:写出执行结果,并解释原因
 ```js
 var a = [0];
 if (a) {
@@ -176,7 +176,7 @@ Number(['1'])//1
 ②对象与原始类型值比较，对象会转换成原始类型的值再进行比较。
 ③undefined和null与其它类型进行比较时，结果都为false，他们相互比较时结果为true。
 
-Day6:写出执行结果,并解释原因
+#Day6:写出执行结果,并解释原因
 ```js
 (function () {
   var a = (b = 5);
@@ -218,7 +218,7 @@ console.log(b);  //Uncaught ReferenceError: b is not defined
 console.log(b);  // 5
 ```
 
-Day7:写出执行结果,并解释原因
+#Day7:写出执行结果,并解释原因
 ```js
 var fullname = 'a';
 var obj = {
@@ -243,7 +243,7 @@ c a
 - 原因在于`this`指向的是函数的执行环境，`this`取决于其被谁调用了，而不是被谁定义了。
 - 对第一个`console.log()`语句而言，`getFullName()` 是作为`obj.prop`对象的一个方法被调用的，因此此时的执行环境应该是这个对象。另一方面，但`getFullName()`被分配给`test`变量时，此时的执行环境变成全局对象（`window`），原因是`test`是在全局作用域中定义的。因此，此时的`this`指向的是全局作用域的`fullname`变量，即a。
 
-Day8:写出执行结果,并解释原因
+#Day8:写出执行结果,并解释原因
 ```js
 var company = {
     address: 'beijing'
@@ -327,7 +327,7 @@ console.log(output);
 ```
 答案：输出是 undefined。x虽然是全局变量，但是它是一个object。delete作用在x.foo上，成功的将x.foo删去。所以返回undefined
 
-Day9:写出执行结果,并解释原因
+#Day9:写出执行结果,并解释原因
 ```js
 var foo = function bar(){ return 12; };
 console.log(typeof bar());  
@@ -348,7 +348,7 @@ var foo = function bar(){
 // bar is undefined here
 ```
 
-Day10:写出执行结果,并解释原因
+#Day10:写出执行结果,并解释原因
 ```js
 var x=1;
 if(function f(){}){
@@ -363,7 +363,7 @@ console.log(x)
 **解析**
 条件判断为假的情况有：0，false，''，null，undefined，未定义对象。函数声明写在运算符中，其为true，但放在运算符中的函数声明在执行阶段是找不到的。另外，对未声明的变量执行typeOf不会报错，会返回undefined
 
-Day11:写出执行结果,并解释原因
+#Day11:写出执行结果,并解释原因
 ```js
 function f(){
       return f;
@@ -382,7 +382,7 @@ function f(){}
 // 答案：true
 ```
 
-Day12:写出执行结果,并解释原因
+#Day12:写出执行结果,并解释原因
 ```js
 var foo = {
         bar: function(){
@@ -399,7 +399,7 @@ undefined
 **解析**
 将foo.bar赋值给f,相当于f(),故其this指向window
 
-Day13:关于AMD、CMD规范区别说法正确的是？（多选）
+#Day13:关于AMD、CMD规范区别说法正确的是？（多选）
 ```js
 关于AMD、CMD规范区别说法正确的是？（多选）
 
@@ -418,7 +418,7 @@ C.CMD 推崇依赖就近;AMD 推崇依赖前置
 D.CMD 是延迟执行;AMD 是提前执行
 E.CMD性能好,因为只有用户需要的时候才执行;AMD用户体验好,因为没有延迟,依赖模块提前执行了
 
-Day14:关于SPA单页页面的理解正确的是?
+#Day14:关于SPA单页页面的理解正确的是?
 ```js
 关于SPA单页页面的理解正确的是?
 
@@ -445,7 +445,7 @@ SPA（ single-page application ）仅在 Web 页面初始化时加载相应的 H
   - 前进后退路由管理：由于单页应用在一个页面中显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理；
   - SEO 难度较大：由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上其有着天然的弱势。
 
-Day15:下面对Vue.js中keep-alive的理解正确的是？（多选）
+#Day15:下面对Vue.js中keep-alive的理解正确的是？（多选）
 ```js
 下面对Vue.js中keep-alive的理解正确的是？（多选）
 
@@ -463,7 +463,7 @@ A C
 B: include的优先级比 exclude 低；
 D：能避免重新渲染
 
-Day16:关于Vue.js虚拟DOM的优缺点说法正确的是？（多选）
+#Day16:关于Vue.js虚拟DOM的优缺点说法正确的是？（多选）
 ```js
 关于Vue.js虚拟DOM的优缺点说法正确的是？（多选）
 
@@ -485,7 +485,7 @@ A B D
 2）缺点
 **无法进行极致优化：** 虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但在一些性能要求极高的应用中虚拟 DOM 无法进行针对性的极致优化。比如VScode采用直接手动操作DOM的方式进行极端的性能优化
 
-Day17:下面代码输出什么？
+#Day17:下面代码输出什么？
 ```js
 for (let i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 1);
@@ -506,7 +506,7 @@ for (var i = 0; i < 3; i++) {
 
 > 答案：3 3 3，由于JavaScript中的事件执行机制，setTimeout函数真正被执行时，循环已经走完。 由于第一个循环中的变量i是使用var关键字声明的，因此该值是全局的。 在循环期间，我们每次使用一元运算符++都会将i的值增加1。 因此在第一个例子中，当调用setTimeout函数时，i已经被赋值为3。
 
-Day18:写出执行结果,并解释原因
+#Day18:写出执行结果,并解释原因
 ```js
 const num = {
   a: 10,
@@ -525,7 +525,7 @@ console.log(num.reduce());
 **解析**
 注意，add是普通函数，而reduce是箭头函数。对于箭头函数，`this`关键字指向是它所在上下文（定义时的位置）的环境，与普通函数不同！ 这意味着当我们调用reduce时，它不是指向num对象，而是指其定义时的环境（window）。没有值a属性，返回`undefined`。
 
-Day19:写出执行结果,并解释原因
+#Day19:写出执行结果,并解释原因
 ```js
 const person = { name: "yideng" };
 
@@ -543,7 +543,7 @@ yideng is 21     ƒ sayHi(age) {return `${this.name} is ${age}`;}
 使用两者，我们可以传递我们想要`this`关键字引用的对象。 但是，`.call`方法会立即执行！
 `.bind`方法会返回函数的拷贝值，但带有绑定的上下文！ 它不会立即执行。
 
-Day20:写出执行结果,并解释原因
+#Day20:写出执行结果,并解释原因
 ```js
 ["1", "2", "3"].map(parseInt);
 ```
@@ -571,7 +571,7 @@ parseInt的第二个参数radix为1时，解析结果为NaN；
 parseInt的第二个参数radix在2—36之间时，如果string参数的第一个字符（除空白以外），不属于radix指定进制下的字符，解析结果为NaN。
 parseInt("3", 2)执行时，由于"3"不属于二进制字符，解析结果为NaN。
 
-Day21:写出执行结果,并解释原因
+#Day21:写出执行结果,并解释原因
 ```js
 [typeof null, null instanceof Object]
 ```
@@ -595,7 +595,7 @@ Day21:写出执行结果,并解释原因
 
 2）instanceof 运算符用来检测 constructor.prototype 是否存在于参数 object 的原型链上.
 
-Day22:写出执行结果,并解释原因
+#Day22:写出执行结果,并解释原因
 ```js
 function f() {}
 const a = f.prototype,b = Object.getPrototypeOf(f)
@@ -611,7 +611,7 @@ false
 - a === Object.getPrototypeOf(new f()) // true 
 - b === Function.prototype // true
 
-Day22:写出执行结果,并解释原因
+#Day22:写出执行结果,并解释原因
 ```js
 function f() {}
 const a = f.prototype,b = Object.getPrototypeOf(f)
@@ -627,7 +627,7 @@ false
 - a === Object.getPrototypeOf(new f()) // true 
 - b === Function.prototype // true
 
-Day24:选择正确的答案
+#Day24:选择正确的答案
 ```js
 console.log([2,1,0].reduce(Math.pow));
 console.log([].reduce(Math.pow));
@@ -650,7 +650,7 @@ C
   - 需要注意的是 If the array is empty and no initialValue was provided, TypeError would be thrown.
 所以第二个会报异常. 第一个表达式等价于 Math.pow(2, 1) => 2; Math.pow(2, 0) =>1
 
-Day25:请问变量a会被GC吗
+#Day25:请问变量a会被GC吗
 ```js
 function test(){
     var a = 1;
@@ -667,7 +667,7 @@ test();
 **解析**
 因为eval会欺骗词法作用域，例如function test(){eval("var a = 1"},创建了一个a变量，不确定eval是否对a进行了引用，所以为了保险，不对其进行优化。相对，try catch,with也不会被回收，with会创建新的作用域。
 
-Day26:写出执行结果,并解释原因
+#Day26:写出执行结果,并解释原因
 ```js
 const value  = 'Value is' + !!Number(['0']) ? 'yideng' : 'undefined';
 console.log(value);
@@ -681,7 +681,7 @@ yideng
 - +优先级大于？
 - 所以原题等价于 'Value is false' ? 'yideng' : undefined'' 而不是 'Value is' + (false ? 'yideng' : 'undefined')
 
-Day27:写出执行结果,并解释原因
+#Day27:写出执行结果,并解释原因
 ```js
 var arr = [0,1];
 arr[5] = 5;
@@ -698,7 +698,7 @@ console.log(newArr.length);
 - `filter` 为数组中的每个元素调用一次 `callback` 函数，并利用所有使得 `callback` 返回 true 或[等价于 true 的值](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)的元素创建一个新数组。`callback` 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 `callback` 测试的元素会被跳过，不会被包含在新数组中。
 - 也就是说 从 2-4 都是没有初始化的'坑'!, 这些索引并不存在与数组中. 在 array 的函数调用的时候是会跳过这些'坑'的.
 
-Day28:写出执行结果,并解释原因(以最新谷歌浏览器为准)
+#Day28:写出执行结果,并解释原因(以最新谷歌浏览器为准)
 ```js
 async function async1() {
     console.log('async1 start');
@@ -788,7 +788,7 @@ function async2() {
 
 <br><br>
 
-Day29:下面代码中 a 在什么情况下会打印 1
+#Day29:下面代码中 a 在什么情况下会打印 1
 ```js
 var a = ?;
 if(a == 1 && a== 2 && a== 3){
@@ -899,7 +899,7 @@ if (a == 1 && a == 2 && a == 3) {
 
 > 业务中一般不会写出这种代码,重点还是知识点的考察
 
-Day30:写出执行结果,并解释原因
+#Day30:写出执行结果,并解释原因
 ```js
 const obj = {
     '2': 3,
@@ -928,7 +928,7 @@ Object(4) [empty × 2, 1, 2, splice: ƒ, push: ƒ]
 
 这个obj中定义了两个key值，分别为splice和push分别对应数组原型中的splice和push方法，因此这个obj可以调用数组中的push和splice方法，调用对象的push方法：push(1)，因为此时obj中定义length为2，所以从数组中的第二项开始插入，也就是数组的第三项（下表为2的那一项），因为数组是从第0项开始的，这时已经定义了下标为2和3这两项，所以它会替换第三项也就是下标为2的值，第一次执行push完，此时key为2的属性值为1，同理：第二次执行push方法，key为3的属性值为2。此时的输出结果就是：Object(4) [empty × 2, 1, 2, splice: ƒ, push: ƒ]，因为只是定义了2和3两项，没有定义0和1这两项，所以前面会是empty。
 
-Day31:写出执行结果,并解释原因
+#Day31:写出执行结果,并解释原因
 ```js
 let a = {n: 1};
 let b = a;
@@ -961,7 +961,7 @@ undefined {n:2}
 ```
 
 
-Day32:写出执行结果,并解释原因
+#Day32:写出执行结果,并解释原因
 ```js
 var a1={}, b1='123', c1=123;  
 a1[b1]='b';
@@ -1027,7 +1027,7 @@ a.get(c);  // 'c'
 ```
 
 
-Day33:写出执行结果,并解释原因
+#Day33:写出执行结果,并解释原因
 ```js
 function Foo() {
     Foo.a = function() {
@@ -1061,7 +1061,7 @@ Foo.a();
 ```
 
 
-Day34:写出执行结果,并解释原因
+#Day34:写出执行结果,并解释原因
 ```js
 function user(obj) {
   obj.name = "京程一灯"
@@ -1084,7 +1084,7 @@ ECMAScript中所有函数的参数都是按值传递的。也就是说，把函�
 ```
 
 
-Day35:写出执行结果,并解释原因
+#Day35:写出执行结果,并解释原因
 ```js
 let x, y;
 try {
@@ -1107,7 +1107,7 @@ console.log(y);
 ```
 
 
-Day36:写出执行结果,并解释原因
+#Day36:写出执行结果,并解释原因
 ```js
 function fn() {
     getValue = function () { console.log(1); };
@@ -1178,7 +1178,7 @@ new fn().getValue();
 ```
 
 
-Day37:写出执行结果,并解释原因
+#Day37:写出执行结果,并解释原因
 ```js
 let length = 10;
 function fn() {
@@ -1217,7 +1217,7 @@ obj.method(fn,1);
 ```
 
 
-Day38:写出执行结果,并解释原因
+#Day38:写出执行结果,并解释原因
 ```js
 var a=10;
 var foo={
@@ -1296,7 +1296,7 @@ console.log((foo.bar,foo.bar)());
 ```
 
 
-Day39:写出执行结果,并解释原因
+#Day39:写出执行结果,并解释原因
 ```js
 function getName(){
   for(let i = 0;i<5;i++){
@@ -1328,7 +1328,7 @@ undefined 0 1 2 3 4
 ```
 
 
-Day40:写出执行结果,并解释原因
+#Day40:写出执行结果,并解释原因
 ```js
 const num = parseInt("2*4",10);
 console.log(num);
@@ -1344,7 +1344,7 @@ console.log(num);
 ```
 
 
-Day41:选择正确答案，并解释为什么
+#Day41:选择正确答案，并解释为什么
 ```js
 const company = { name: "京程一灯" };
 Object.defineProperty(company, "address", { value: "北京" });
@@ -1368,7 +1368,7 @@ B
 ```
 
 
-Day42:写出执行结果,并解释原因
+#Day42:写出执行结果,并解释原因
 ```js
 let num = 10;
 const increaseNumber = () => num++;
@@ -1389,7 +1389,7 @@ console.log(num2);
 ```
 
 
-Day43:写出执行结果,并解释原因
+#Day43:写出执行结果,并解释原因
 ```js
 const value = { number: 10 };
 const multiply = (x = { ...value }) => {
@@ -1413,7 +1413,7 @@ multiply(value);
 ```
 
 
-Day44:写出执行结果,并解释原因
+#Day44:写出执行结果,并解释原因
 ```js
 [1, 2, 3, 4].reduce((x, y) => console.log(x, y));
 ```
@@ -1439,7 +1439,7 @@ Day44:写出执行结果,并解释原因
 ```
 
 
-Day45:写出执行结果,并解释原因
+#Day45:写出执行结果,并解释原因
 ```js
 // index.js
 console.log('running index.js');
@@ -1461,7 +1461,7 @@ import命令是编译阶段执行的，在代码运行之前。因此这意味�
 ```
 
 
-Day46:写出执行结果,并解释原因
+#Day46:写出执行结果,并解释原因
 ```js
 function addToList(item, list) {
  return list.push(item);
@@ -1481,7 +1481,7 @@ console.log(result);
 ```
 
 
-Day47:写出执行结果,并解释原因
+#Day47:写出执行结果,并解释原因
 ```js
 var a = 0;
 if(true){
@@ -1654,7 +1654,7 @@ console.log(a);
 ```
 
 
-Day48:能否以某种方式为下面的语句使用展开运算而不导致类型错误
+#Day48:能否以某种方式为下面的语句使用展开运算而不导致类型错误
 ```js
 var obj = { x: 1, y: 2, z: 3 };
 [...obj]; // TypeError
@@ -1705,7 +1705,7 @@ obj[Symbol.iterator] = function*() {
 ```
 
 
-Day49:请你完成一个safeGet函数，可以安全的获取无限多层次的数据
+#Day49:请你完成一个safeGet函数，可以安全的获取无限多层次的数据
 ```js
 // 请你完成一个safeGet函数，可以安全的获取无限多层次的数据，一旦数据不存在不会报错，会返回 undefined，例如
 var data = { a: { b: { c: 'yideng' } } }
@@ -1726,7 +1726,7 @@ const safeGet = (o, path) => {
 ```
 
 
-Day50:写一个isPrime()函数
+#Day50:写一个isPrime()函数
 ```js
 写一个isPrime()函数，当其为质数时返回true，否则返回false。
 提示：质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。
@@ -1769,7 +1769,7 @@ function isPrime(number) {
 ```
 
 
-Day51:写出打印结果
+#Day51:写出打印结果
 ```js
 var x = 20;
 var temp = {
@@ -1791,7 +1791,7 @@ var temp = {
 ```
 
 
-Day52:请实现一个flattenDeep函数，把嵌套的数组扁平化~~
+#Day52:请实现一个flattenDeep函数，把嵌套的数组扁平化~~
 ```js
 flattenDeep([1, [2, [3, [4]], 5]]); //[1, 2, 3, 4, 5]
 // 请实现一个flattenDeep函数，把嵌套的数组扁平化
@@ -1849,7 +1849,7 @@ console.log(flattenDeep([1, [2, [3, [4]], 5]]));
 ```
 
 
-Day53:请实现一个 uniq 函数，实现数组去重~~
+#Day53:请实现一个 uniq 函数，实现数组去重~~
 ```js
 uniq([1, 2, 3, 5, 3, 2]);//[1, 2, 3, 5]
 // 请实现一个 uniq 函数，实现数组去重
@@ -1916,7 +1916,7 @@ function uniq(arry) {
 ```
 
 
-Day54:new操作符都做了什么，并手动实现一下
+#Day54:new操作符都做了什么，并手动实现一下
 
 ```js
 // 答案&解析
@@ -1991,7 +1991,7 @@ function newOperator(ctor){
 ```
 
 
-Day55:实现 (5).add(3).minus(2) 功能
+#Day55:实现 (5).add(3).minus(2) 功能
 ```js
 // 实现 (5).add(3).minus(2) 功能
 console.log((5).add(3).minus(2)); // 6
@@ -2055,7 +2055,7 @@ console.log((5).add(3).minus(6.234345));  // 1.765655
 ```
 
 
-Day56:介绍下Set、Map、WeakSet和WeakMap的区别
+#Day56:介绍下Set、Map、WeakSet和WeakMap的区别
 
 ```js
 // 答案与解析
@@ -2080,7 +2080,7 @@ Day56:介绍下Set、Map、WeakSet和WeakMap的区别
 ```
 
 
-Day57:如何在不使用%摸运算符的情况下检查一个数字是否是偶数
+#Day57:如何在不使用%摸运算符的情况下检查一个数字是否是偶数
 
 ```js
 // 答案
@@ -2137,7 +2137,7 @@ function isEven(num){
 ```
 
 
-Day58:Object.seal和Object.freeze方法之间有什么区别
+#Day58:Object.seal和Object.freeze方法之间有什么区别
 
 ```js
 // 答案
@@ -2161,7 +2161,7 @@ Object.seal()方法封闭一个对象，阻止添加新属性并将所有现有�
 ```
 
 
-Day59:完成plus函数，通过全部的测试用例
+#Day59:完成plus函数，通过全部的测试用例
 ```js
 'use strict';
 function plus(n){
@@ -2212,7 +2212,7 @@ module.exports = plus;
 ```
 
 
-Day60:解释下这段代码的意思以及用到的技术点
+#Day60:解释下这段代码的意思以及用到的技术点
 ```js
 [].forEach.call($$("*"),function(a){  
   a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16)  
@@ -2245,7 +2245,7 @@ const a =12.34;
 ```
 
 
-Day61:写出执行结果,并解释原因
+#Day61:写出执行结果,并解释原因
 ```js
 var yideng_a = Function.length;
 var yideng_b = new Function().length;
@@ -2263,7 +2263,7 @@ Function 构造器本身也是个Function。他的 length 属性值为 1 。该�
 ```
 
 
-Day62:不借助中间变量交换两个变量的值
+#Day62:不借助中间变量交换两个变量的值
 ```js
 不借助中间变量交换两个变量的值
 比如 let a = 1,b = 2;交换a,b的值
@@ -2315,7 +2315,7 @@ a = b + ((b=a),0);
 ```
 
 
-Day63:实现一个isNegtiveZero函数，只检查+0和-0，-0则返回true,+0返回false
+#Day63:实现一个isNegtiveZero函数，只检查+0和-0，-0则返回true,+0返回false
 ```js
 // 实现一个isNegtiveZero函数，只检查+0和-0，-0则返回true,+0返回false
 function isNegtiveZero(num){
@@ -2357,7 +2357,7 @@ console.log(isNegtiveZero(-0));
 ```
 
 
-Day64:补全代码
+#Day64:补全代码
 ```js
 /*
 	说明：该文件名未知，位于当前项目内的dist/scripts文件夹内
@@ -2375,7 +2375,7 @@ es2020新特性
 ```
 
 
-Day65:选择正确的选项
+#Day65:选择正确的选项
 ```js
 class YiDeng {
   static str = '京程一灯';
@@ -2413,7 +2413,7 @@ https://github.com/tc39/proposal-class-fields#field-declarations
 ```
 
 
-Day66:一个简单的算法题目
+#Day66:一个简单的算法题目
 ```js
 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，这两个整数可能有多种组合，找出其中一组组合即可，并返回他们的数组下标。
 
@@ -2447,7 +2447,7 @@ const twoSum = function (nums, target) {
 ```
 
 
-Day67:写出执行结果,并解释原因
+#Day67:写出执行结果,并解释原因
 ```js
 3.toString()
 3..toString()
@@ -2466,7 +2466,7 @@ Day67:写出执行结果,并解释原因
 ```
 
 
-Day68:写出执行结果,并解释原因
+#Day68:写出执行结果,并解释原因
 ```js
 function yideng(){}
 const a = {}, b = Object.prototype;
@@ -2520,7 +2520,7 @@ Object.getPrototypeOf(f) === Function.prototype; //true
 ```
 
 
-Day69:写出执行结果,并解释原因
+#Day69:写出执行结果,并解释原因
 ```js
 const lowerCaseOnly =  /^[a-z]+$/;
 console.log(lowerCaseOnly.test('yideng'));
@@ -2537,7 +2537,7 @@ test方法的参数会被调用toString强制转换成字符串
 ```
 
 
-Day70:写出执行结果,并解释原因
+#Day70:写出执行结果,并解释原因
 ```js
 function captureOne(re, str) {
   var match = re.exec(str);
@@ -2569,7 +2569,7 @@ console.log(a5 === a6);
 ```
 
 
-Day71:[手写代码]实现Promise.all方法
+#Day71:[手写代码]实现Promise.all方法
 
 ```js
 // 核心思路
@@ -2627,7 +2627,7 @@ promiseAll([p3, p1, p2]).then(res => {
 ```
 
 
-Day72:有效括号算法题
+#Day72:有效括号算法题
 ```js
 /*
 	给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效
@@ -2689,7 +2689,7 @@ var isValid = function(s){
 ```
 
 
-Day73:写出执行结果,并解释原因
+#Day73:写出执行结果,并解释原因
 ```js
 function yideng(n,o){
     console.log(o); // ？
@@ -2750,7 +2750,7 @@ undefined 0 1 1
 ```
 
 
-Day74:写出执行结果,并解释原因
+#Day74:写出执行结果,并解释原因
 ```js
 var arr1 = "ab".split('');
 var arr2 = arr1.reverse(); 
@@ -2780,7 +2780,7 @@ slice() 方法返回一个新的数组对象，这一对象是一个由 begin �
 ```
 
 
-Day75:写出执行结果,并解释原因
+#Day75:写出执行结果,并解释原因
 ```js
 var F = function(){}
 Object.prototype.a = function(){
@@ -2819,7 +2819,7 @@ f并不是Function的实例，因为它本来就不是构造函数，调用的�
 ```
 
 
-Day76:写出执行结果,并解释原因
+#Day76:写出执行结果,并解释原因
 ```js
 const a = [1,2,3],
     b = [1,2,3],
@@ -2869,7 +2869,7 @@ console.log([a == b, a === b, a > c, a < c, d > e]);
 ```
 
 
-Day77:补充代码，使代码可以正确执行
+#Day77:补充代码，使代码可以正确执行
 ```js
 const str = '1234567890';
 function formatNumber(str){
@@ -2948,7 +2948,7 @@ console.log(formatNumber("1234567890"));
 ```
 
 
-Day79:写出下面代码null和0进行比较的代码执行结果，并解释原因
+#Day79:写出下面代码null和0进行比较的代码执行结果，并解释原因
 ```js
 console.log(null == 0);
 console.log(null <= 0);
@@ -2968,7 +2968,7 @@ false true false
 3. 关系运算符，在设计上总是需要运算元尝试转为一个number，而相等运算符在设计上，则没有这方面的考虑。所以 计算null<=0 或者>=0的时候回触发Number(null)，它将被视为0（Number(null) == 0为true）
 
 
-Day80:关于数组sort，下面代码的正确打印结果是什么，并解释原因
+#Day80:关于数组sort，下面代码的正确打印结果是什么，并解释原因
 ```js
 const arr1 = ['a', 'b', 'c'];
 const arr2 = ['b', 'c', 'a'];
@@ -2992,7 +2992,7 @@ true, true, false
 3. 在第三个测试中，arr1.sort() 和 arr2.sort() 的排序顺序相同；但是，它们指向内存中的不同对象。因此，第三个测试的评估结果为 false。
 
 
-Day81:介绍防抖与节流的原理，并动手实现
+#Day81:介绍防抖与节流的原理，并动手实现
 ```js
 const debounce = (fn,delay) => {
   // 介绍防抖函数原理，并实现
@@ -3070,7 +3070,7 @@ const throttle = (fn,delay = 500) => {
 ```
 
 
-Day82:关于隐式转换，下面代码的执行结果是什么？并解释原因
+#Day82:关于隐式转换，下面代码的执行结果是什么？并解释原因
 
 ```js
 let a = [];
@@ -3174,7 +3174,7 @@ ECMA规则：https://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
 5. ECMAScript规范中规定null和undefined之间互相宽松相等（==），并且也与其自身相等，但和其他所有的值都不宽松相等（==）
 
 
-Day83:请写出如下代码的打印结果，并解释为什么
+#Day83:请写出如下代码的打印结果，并解释为什么
 ```js
 var obj = {};
 var x = +obj.yideng?.name ?? '京程一灯';
@@ -3194,7 +3194,7 @@ NaN
 
 
 
-Day84:对于length下面代码的输出结果是什么？并解释原因
+#Day84:对于length下面代码的输出结果是什么？并解释原因
 ```js
  function foo(){
    console.log(length);
@@ -3221,7 +3221,7 @@ bar();
 
 
 
-Day85:对于扩展运算符，下面代码的执行结果是什么？并解释原因
+#Day85:对于扩展运算符，下面代码的执行结果是什么？并解释原因
 ```js
 let ydObject = { ...null, ...undefined };
 console.log(ydObject);
@@ -3242,7 +3242,7 @@ console.log(ydArray);
 
 
 
-Day86:写出类数组转换结果，并解释原因
+#Day86:写出类数组转换结果，并解释原因
 ```js
 const arrLike = {
   length:4,
@@ -3330,7 +3330,7 @@ var a = 0;
 3. 而密集数组在内存空间中是被存储在一个连续的类数组里，引擎可以直接通过数组索引访问到数组元素，所以速度会非常快。
 
 
-Day87:写出下面代码1，2，3的大小判断结果
+#Day87:写出下面代码1，2，3的大小判断结果
 ```js
 console.log(1 < 2 < 3);
 console.log(3 > 2 > 1);
@@ -3349,7 +3349,7 @@ true false
 3. 第二个题：3 > 2 等于 true, 然后true > 1, true == 1 ，因此结果是false
 
 
-Day88:以下两段代码会抛出异常吗？解释原因？
+#Day88:以下两段代码会抛出异常吗？解释原因？
 ```js
 let yd = { x: 1, y: 2 };
 // 以下两段代码会抛出异常吗？
@@ -3392,7 +3392,7 @@ Object.defineProperty(ydWithXGetter1, "x", {
 ```
 
 
-Day89:请问React调用机制一共对任务设置了几种优先级别？每种优先级都代表的具体含义是什么？在你开发过程中如果遇到影响主UI渲染卡顿的任务，你又是如何利用这些优先级的？
+#Day89:请问React调用机制一共对任务设置了几种优先级别？每种优先级都代表的具体含义是什么？在你开发过程中如果遇到影响主UI渲染卡顿的任务，你又是如何利用这些优先级的？
 null
 ### 答案
 
@@ -3422,7 +3422,7 @@ React.unstable_scheduleCallback(priorityLevel, callback, { timeout: <number> })
 ReactDOM.createRoot( document.getElementById('container') ).render( <ConcurrentSchedulingExample /> )
 ```
 
-Day90:Vue父组件可以监听到子组件的生命周期吗？如果能请写出你的实现方法。
+#Day90:Vue父组件可以监听到子组件的生命周期吗？如果能请写出你的实现方法。
 null
 ### 答案
 
@@ -3468,7 +3468,7 @@ mounted(){
 当然 @hook 方法不仅仅是可以监听 mounted，其它的生命周期事件，例如：created，updated 等都可以监听。
 
 
-Day91:Vue 为什么要用 vm.$set() 解决对象新增属性不能响应的问题 ？你能说说如下代码的实现原理么？
+#Day91:Vue 为什么要用 vm.$set() 解决对象新增属性不能响应的问题 ？你能说说如下代码的实现原理么？
 ```js
 Vue.set (object, propertyName, value) 
 vm.$set (object, propertyName, value)
@@ -3527,7 +3527,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
 
 
 
-Day92:既然 Vue 通过数据劫持可以精准探测数据在具体dom上的变化,为什么还需要虚拟 DOM diff 呢?
+#Day92:既然 Vue 通过数据劫持可以精准探测数据在具体dom上的变化,为什么还需要虚拟 DOM diff 呢?
 null
 ### 答案
 
@@ -3545,7 +3545,7 @@ null
 
 
 
-Day93:Vue组件中写name选项有除了搭配keep-alive还有其他作用么？你能谈谈你对keep-alive了解么？（平时使用和源码实现方面）
+#Day93:Vue组件中写name选项有除了搭配keep-alive还有其他作用么？你能谈谈你对keep-alive了解么？（平时使用和源码实现方面）
 null
 ### 答案
 
@@ -3705,7 +3705,7 @@ return vnode || (slot && slot[0])
 
 
 
-Day94:说一下React Hooks在平时开发中需要注意的问题和原因？
+#Day94:说一下React Hooks在平时开发中需要注意的问题和原因？
 null
 **1）不要在循环，条件或嵌套函数中调用Hook，必须始终在React函数的顶层使用Hook**
 
@@ -3806,7 +3806,7 @@ const TableDeail = ({
 可以使用基于useContent封装的状态管理工具。
 
 
-Day95:Promise.all中任何一个Promise出现错误的时候都会执行reject，导致其它正常返回的数据也无法使用。你有什么解决办法么？
+#Day95:Promise.all中任何一个Promise出现错误的时候都会执行reject，导致其它正常返回的数据也无法使用。你有什么解决办法么？
 null
 **1）在单个的catch中对失败的promise请求做处理**
 
@@ -3862,7 +3862,7 @@ return t.process().then((result) => {
 
 
 
-Day96:请能尽可能多的说出 Vue 组件间通信方式？在组件的通信中EventBus非常经典，你能手写实现下EventBus么？
+#Day96:请能尽可能多的说出 Vue 组件间通信方式？在组件的通信中EventBus非常经典，你能手写实现下EventBus么？
 null
 ### 一、Vue组件通信方式
 
@@ -3947,7 +3947,7 @@ class EventEmitter {
   emitter.emit('ages', 18)  // 18
   ```
 
-Day97:请讲一下react-redux的实现原理?
+#Day97:请讲一下react-redux的实现原理?
 null
 ### 实现原理
 
@@ -3974,7 +3974,7 @@ connect通过context获取Provider中的store，通过store.getState()获取整�
 connect缓存了store tree中state的状态,通过当前state状态和变更前state状态进行比较,从而确定是否调用this.setState()方法触发Connect及其子组件的重新渲染
 
 
-Day98:写出下面代码的执行结果，并解释原因
+#Day98:写出下面代码的执行结果，并解释原因
 ```js
 Object.prototype.yideng = "京程一灯";
 var a = 123;
@@ -4054,7 +4054,7 @@ console.log(a.yideng);  //京程一灯
 
 
 
-Day99:React 中 setState 后发生了什么？setState 为什么默认是异步？setState 什么时候是同步？
+#Day99:React 中 setState 后发生了什么？setState 为什么默认是异步？setState 什么时候是同步？
 null
 ### 一、React中setState后发生了什么
 
@@ -4095,7 +4095,7 @@ null
 
 
 
-Day100:哪些方法会触发 react 重新渲染？重新渲染 render 会做些什么？
+#Day100:哪些方法会触发 react 重新渲染？重新渲染 render 会做些什么？
 null
 ### 一、哪些方法会触发 react 重新渲染？
 
@@ -4175,7 +4175,7 @@ React.memo 是 React 16.6 新的一个 API，用来缓存组件的渲染，避�
 微服务的核心思想是：以更轻、更小的粒度来纵向拆分应用，各个小应用能够独立选择技术、发展、部署。我们在开发组件的过程中也能用到类似的思想。试想当一个整个页面只有一个组件时，无论哪处改动都会触发整个页面的重新渲染。在对组件进行拆分之后，render 的粒度更加精细，性能也能得到一定的提升。
 
 
-Day101:Vue v-model 是如何实现的，语法糖实际是什么
+#Day101:Vue v-model 是如何实现的，语法糖实际是什么
 null
 
 ### 一、语法糖
@@ -4242,7 +4242,7 @@ js 监听input 输入框输入数据改变，用oninput ,数据改变以后就�
 
 父组件设置v-model的值为input$emit过来的值。
 
-Day102:说一下减少 dom 数量的办法？一次性给你大量的 dom 怎么优化？
+#Day102:说一下减少 dom 数量的办法？一次性给你大量的 dom 怎么优化？
 null
 ### 一、减少DOM数量的方法
 
@@ -4304,7 +4304,7 @@ js模拟DOM树并对DOM树操作的一种技术。virtual DOM是一个纯js对�
 
 利用virtual dom，将dom抽象为虚拟dom，在dom发生变化的时候先对虚拟dom进行操作，通过dom diff算法将虚拟dom和原虚拟dom的结构做对比，最终批量的去修改真实的dom结构，尽可能的避免了频繁修改dom而导致的频繁的重排和重绘。
 
-Day103:多个 tab 只对应一个内容框，点击每个 tab 都会请求接口并渲染到内容框，怎么确保频繁点击 tab 但能够确保数据正常显示？
+#Day103:多个 tab 只对应一个内容框，点击每个 tab 都会请求接口并渲染到内容框，怎么确保频繁点击 tab 但能够确保数据正常显示？
 null
 ### 一、分析
 
@@ -4417,7 +4417,7 @@ getData()
 ```
 
 
-Day104:项目中如何进行异常捕获
+#Day104:项目中如何进行异常捕获
 null
 ### 一、代码执行的错误捕获
 
@@ -4459,7 +4459,7 @@ null
 
 Vue有 `errorHandler`，React有 `componentDidCatch` 进行错误捕获
 
-Day105:JavaScript 中如何模拟实现方法的重载,动手实现下
+#Day105:JavaScript 中如何模拟实现方法的重载,动手实现下
 null
 ### 一、背景知识
 
@@ -4506,7 +4506,7 @@ console.log(methods.add(10,20,30)); //60
 
 
 
-Day106:Webpack 里面的插件是怎么实现的？
+#Day106:Webpack 里面的插件是怎么实现的？
 null
 ### 实现分析
 
@@ -4536,7 +4536,7 @@ MyExampleWebpackPlugin.prototype.apply = function(compiler) {
 
 
 
-Day107:对虚拟 DOM 的理解？虚拟 DOM 主要做了什么？虚拟 DOM 本身是什么？
+#Day107:对虚拟 DOM 的理解？虚拟 DOM 主要做了什么？虚拟 DOM 本身是什么？
 null
 
 ### 一、什么是虚拟Dom
@@ -4578,7 +4578,7 @@ Virtual DOM本质上是JavaScript的对象，它可以很方便的跨平台操�
 
 
 
-Day108:Webpack 为什么慢，如何进行优化
+#Day108:Webpack 为什么慢，如何进行优化
 null
 ### 一、webpack 为什么慢
 
@@ -4719,7 +4719,7 @@ module.exports = {
 
 
 
-Day109:动画性能如何检测
+#Day109:动画性能如何检测
 null
 ####  1.Chrome 提供给开发者的功能十分强大，在开发者工具中，我们进行如下选择调出 FPS meter 选项：
    
@@ -4830,7 +4830,7 @@ loop();
 
 
 
-Day110:客户端缓存有几种方式？浏览器出现 from disk、from memory 的策略是啥
+#Day110:客户端缓存有几种方式？浏览器出现 from disk、from memory 的策略是啥
 null
 ### 一、客户端缓存
 
@@ -4983,7 +4983,7 @@ Expires 是 HTTP 1.0 的字段，表示缓存到期时间，是一个绝对的�
 
 
 
-Day112:数组里面有 10 万个数据，取第一个元素和第 10 万个元素的时间相差多少
+#Day112:数组里面有 10 万个数据，取第一个元素和第 10 万个元素的时间相差多少
 null
 ### 解析
 
@@ -5008,7 +5008,7 @@ console.timeEnd('arr100000')
 // arr100000: 0.002685546875ms
 ```
 
-Day113:Import 和 CommonJS 在 webpack 打包过程中有什么不同
+#Day113:Import 和 CommonJS 在 webpack 打包过程中有什么不同
 null
 
 
@@ -5029,7 +5029,7 @@ es6模块编译后会添加`{__esModule:true}`。如果被调用的es6模块中�
 
 commonjs模块会原样输出
 
-Day114:说一下Webpack 热更新的原理
+#Day114:说一下Webpack 热更新的原理
 null
 ### 一、基础概念
 
@@ -5098,7 +5098,7 @@ null
 - 然后会调用HotModuleReplacement.runtime.js的hotAddUpdateChunk方法动态更新模块代码 
 - 然后调用hotApply方法进行热更新
 
-Day115:说一下 vue-router 的原理
+#Day115:说一下 vue-router 的原理
 null
 ### 实现原理
 
@@ -5129,7 +5129,7 @@ history模式，基于浏览器history api，使用 `window.onpopstate` 对浏�
 
 hash模式和history模式都是通过 `window.addEventListenter()` 方法监听 `hashchange` 和 `popState` 进行相应路由的操作。可以通过back、foward、go等方法访问浏览器的历史记录栈，进行各种跳转。而abstract模式是自己维护一个模拟的浏览器历史记录栈的数组。
 
-Day116:商城的列表页跳转到商品的详情页，详情页数据接口很慢，前端可以怎么优化用户体验？
+#Day116:商城的列表页跳转到商品的详情页，详情页数据接口很慢，前端可以怎么优化用户体验？
 null
 ### 一、优化简要版
 
@@ -5326,7 +5326,7 @@ imgParentParent.replaceChild(newImgParent, imgParent);
 1. 在网络依然很慢的情况下, 首次进入详情页面, 如果长时间的骨架图和已知布局下, 用户的体验依然是不好的, 这里可以考虑 PWA 方案, 对最近一次成功请求的内容进行劫持, 并在无网情况下, 做出相应的提示和展示处理
 2. 需要 UI 那边提供三套静态 img 资源
 
-Day118:说一下单点登录实现原理
+#Day118:说一下单点登录实现原理
 null
 ### 一、什么是单点登录
 
@@ -5396,7 +5396,7 @@ null
 
 
 
-Day119:怎样判断一个对象是否是数组，如何处理类数组对象
+#Day119:怎样判断一个对象是否是数组，如何处理类数组对象
 null
 #### 判断数组方式
 
@@ -5465,7 +5465,7 @@ function toArray(s){
 
 
 
-Day120:说一下 CORS 的简单请求和复杂请求的区别
+#Day120:说一下 CORS 的简单请求和复杂请求的区别
 null
 ### CORS
 
@@ -5543,7 +5543,7 @@ CORS可以分成两种：
 
 
 
-Day121:说一下 在 map 中和 for 中调用异步函数的区别
+#Day121:说一下 在 map 中和 for 中调用异步函数的区别
 null
 ### map & for
 
@@ -5662,7 +5662,7 @@ function getData() {
 
 
 
-Day122:说一下 import 的原理，与 require 有什么不同?
+#Day122:说一下 import 的原理，与 require 有什么不同?
 null
 #### import原理(实际上就是ES6 module的原理)
 
@@ -5701,7 +5701,7 @@ console.log('after', modA.a); // 还是1
 
 
 
-Day123:说下 webpack 的 loader 和 plugin 的区别，都使用过哪些 loader 和 plugin
+#Day123:说下 webpack 的 loader 和 plugin 的区别，都使用过哪些 loader 和 plugin
 null
 ### 一、loader&plugin
 
