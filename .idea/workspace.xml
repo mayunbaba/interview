@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="808b786e-20ed-405e-bb05-0c6a4f721c8d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/css/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/css/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html.html" beforeDir="false" afterPath="$PROJECT_DIR$/html.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html.js" beforeDir="false" afterPath="$PROJECT_DIR$/html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/html/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,12 +136,12 @@
       <option name="presentableId" value="Default" />
       <updated>1598081782930</updated>
       <workItem from="1598081785913" duration="880000" />
-      <workItem from="1598082791168" duration="546000" />
+      <workItem from="1598082791168" duration="703000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1426000" />
+    <option name="totallyTimeSpent" value="1583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />

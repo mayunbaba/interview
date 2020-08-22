@@ -8,11 +8,11 @@
 </head>
 
 <body>
-  <script src="./css.js"></script>
+  <script src="./html.js"></script>
   <script>
     var page = '';
     for (var i = 0; i < arr.length; i++) {
-      page += '### '+ (i+1) + arr[i].short_answer.title + '\n'
+      page += '### '+ (i+1) +'、'+ arr[i].short_answer.title + '\n'
         + arr[i].short_answer.subject + '\n'
         + arr[i].short_answer.analysis + '\n\n';
     }

@@ -1,4 +1,4 @@
-### 1实现链式调用
+### 1、实现链式调用
 
 链式调用的核心就在于调用完的方法将自身实例返回
 1）示例一
@@ -96,7 +96,7 @@ let newNum = num.add(222, 333, 444).minus(333, 222).mul(3, 3).divide(2, 3)
 console.log(newNum)
 ```
 
-### 2实现 add(1)(2)(3)
+### 2、实现 add(1)(2)(3)
 
 考点：函数柯里化
 
@@ -164,7 +164,7 @@ console.log(addCurry(1)(2, 3, 4, 5)())  //15
 ```
 
 
-### 3实现 lodash 的\_.get
+### 3、实现 lodash 的\_.get
 
 在 js 中经常会出现嵌套调用这种情况，如 a.b.c.d.e，但是这么写很容易抛出异常。你需要这么写 a && a.b && a.b.c && a.b.c.d && a.b.c.d.e，但是显得有些啰嗦与冗长了。特别是在 graphql 中，这种嵌套调用更是难以避免。
 这时就需要一个 get 函数，使用 get(a, 'b.c.d.e') 简单清晰，并且容错性提高了很多。
@@ -206,7 +206,7 @@ console.log(get({ a: null }, "a", 3)); // output: 3
 console.log(get({ a: { b: 1 } }, "a.b", 3)); // output: 1
 ```
 
-### 4手写用 ES6proxy 如何实现 arr[-1] 的访问
+### 4、手写用 ES6proxy 如何实现 arr[-1] 的访问
 
 ```js
 const negativeArray = els =>
@@ -222,7 +222,7 @@ const unicorn = negativeArray(["京", "程", "一", "灯"]);
 unicorn[-1]; 
 ```
 
-### 5手写发布订阅
+### 5、手写发布订阅
 
 ```js
 // 发布订阅中心, on-订阅, off取消订阅, emit发布, 内部需要一个单独事件中心caches进行存储;
@@ -256,7 +256,7 @@ class Observer {
 }
 ```
 
-### 6手写数组转树
+### 6、手写数组转树
 
 ```js
 // 例如将 input 转成output的形式
@@ -338,7 +338,7 @@ function toTree(parenId, array) {
 console.log(arrayToTree(input))
 ```
 
-### 7介绍防抖节流原理、区别以及应用，并用JavaScript进行实现
+### 7、介绍防抖节流原理、区别以及应用，并用JavaScript进行实现
 
 1）防抖
 - 原理：在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。
@@ -460,7 +460,7 @@ function throttle(func, wait) {
 ```
 
 
-### 8类数组和数组的区别，dom 的类数组如何转换成数组
+### 8、类数组和数组的区别，dom 的类数组如何转换成数组
 
 1）定义
 
@@ -559,7 +559,7 @@ console.log(Array.prototype.slice.call(al2)); //[0, 1, empty × 2]
   console.log(arrayLike2); // {2: 1, 3: 2, length: 4, push: ƒ}
 ```
 
-### 9介绍下 promise 的特性、优缺点，内部是如何实现的，动手实现 Promise
+### 9、介绍下 promise 的特性、优缺点，内部是如何实现的，动手实现 Promise
 
 1）Promise基本特性
 - 1、Promise有三种状态：pending(进行中)、fulfilled(已成功)、rejected(已失败)
@@ -779,7 +779,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
 };
 ```
 
-### 10实现 Promise.all
+### 10、实现 Promise.all
 ```js
 Promise.all = function (arr) {
   // 实现代码
@@ -841,7 +841,7 @@ promiseAll([p3, p1, p2]).then(res => {
 })
 ```
 
-### 11说一下事件循环机制(node、浏览器)
+### 11、说一下事件循环机制(node、浏览器)
 
 #### 1）为什么会有Event Loop
 
@@ -985,7 +985,7 @@ setImmediate(function immediate () {
 - 浏览器端，microtask 在事件循环的 macrotask 执行完之后执行
 
 
-### 12对闭包的看法，为什么要用闭包？说一下闭包原理以及应用场景
+### 12、对闭包的看法，为什么要用闭包？说一下闭包原理以及应用场景
 
 ### 答案
 
@@ -1056,7 +1056,7 @@ for (var i = 0; i < 3; i++) {
 ```
 
 
-### 13写一个 mySetInterVal(fn, a, b),每次间隔 a,a+b,a+2b 的时间，然后写一个 myClear，停止上面的 mySetInterVal
+### 13、写一个 mySetInterVal(fn, a, b),每次间隔 a,a+b,a+2b 的时间，然后写一个 myClear，停止上面的 mySetInterVal
 
 ```js
 const mySetInterval = (fn, a, b) => {
@@ -1091,7 +1091,7 @@ let interval = mySetInterval(() => {
 }, 1000, 1000)
 ```
 
-### 14请列出目前主流的 JavaScript 模块化实现的技术有哪些？说出它们的区别？
+### 14、请列出目前主流的 JavaScript 模块化实现的技术有哪些？说出它们的区别？
 
 目前流行的js模块化规范有CommonJS、AMD、CMD以及ES6的模块系统。
 
@@ -1248,7 +1248,7 @@ ES6的模块化加载时通过 `export default` 导出,用import导入 可通过
 
 ES6的模块的运行机制与common不一样，js引擎对脚本静态分析的时候，遇到模块加载指令后会生成一个只读引用，等到脚本真正执行的时候才会通过引用去模块中获取值，在引用到执行的过程中 模块中的值发生了变化，导入的这里也会跟着变，ES6模块是动态引用，并不会缓存值，模块里总是绑定其所在的模块。
 
-### 15请实现鼠标点击页面中的任意标签，alert 该标签的名称(注意兼容性)
+### 15、请实现鼠标点击页面中的任意标签，alert 该标签的名称(注意兼容性)
 
 #### 代码实现
 
@@ -1277,7 +1277,7 @@ window.onload = function() {
 };
 ```
 
-### 16原生实现 ES5 的 Object.create()方法
+### 16、原生实现 ES5 的 Object.create()方法
 
 #### Object.create()
 
@@ -1323,7 +1323,7 @@ Object.create = function (prototype, properties) {
 };
 ```
 
-### 17原生实现addClass,用多种方法
+### 17、原生实现addClass,用多种方法
 
 #### 1.实现方式一
 
@@ -1377,7 +1377,7 @@ function addClass(obj, cls) {
 
 
 
-### 18回调函数和任务队列的区别
+### 18、回调函数和任务队列的区别
 
 #### 1.回调函数
 
@@ -1395,7 +1395,7 @@ function addClass(obj, cls) {
 
 异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。
 
-### 19按要求完成题目
+### 19、按要求完成题目
 ```js
 /* 
   a)在不使用vue、react的前提下写代码解决一下问题
@@ -1528,7 +1528,7 @@ export default {
 ```
 
 
-### 20实现一个倒计时,setInterval实现的话，如何消除时间误差
+### 20、实现一个倒计时,setInterval实现的话，如何消除时间误差
 
 ### 解决思路
 
@@ -1561,7 +1561,7 @@ function countDown(){
 }
 ```
 
-### 21你是如何组织 JavaScript 代码的？（可以从模块、组件、模式、编程思想等方面回答）
+### 21、你是如何组织 JavaScript 代码的？（可以从模块、组件、模式、编程思想等方面回答）
 
 ### 组织JavaScript代码
 
@@ -1643,7 +1643,7 @@ define();
 require();
 ```
 
-### 22请写出代码执⾏结果，并解释为什么
+### 22、请写出代码执⾏结果，并解释为什么
 ```js
 function yideng() {
   console.log(1);
@@ -1837,7 +1837,7 @@ console.log(window.a,a); //function a(){}  function a(){}
 
 **块级作用域函数只有执行函数声明语句的时候，才会重写对应的全局作用域上的同名变量。**
 
-### 23在浏览器执行以下代码，写出打印结果
+### 23、在浏览器执行以下代码，写出打印结果
 ```js
 console.log("start");
 setTimeout(() => {
@@ -1892,7 +1892,7 @@ children6
 4. 任务分为宏任务和微任务
 5. 每个宏任务内都维持了一个微任务队列，为了让高优先及任务及时执行。也即是每取出一个宏任务，执行完毕之后。检查当前宏任务是否有微任务可执行
 
-### 24请写出弹出值，并解释为什么？
+### 24、请写出弹出值，并解释为什么？
 ```js
 alert(a);
 a();
@@ -1946,7 +1946,7 @@ a();                     // typeError
 >
 > 遇到`var a`，编译器会询问作用域是否已经有一个该名称的变量存在于同一个作用域的集合中。如果是，编译器会忽略该声明，继续进行编译；否则他会要求作用于在当前作用域的集合中声明一个新的变量，并命名为a。
 
-### 25原生 JavaScript 实现图片懒加载的思路
+### 25、原生 JavaScript 实现图片懒加载的思路
 
 ### 实现方案
 
@@ -2083,7 +2083,7 @@ a();                     // typeError
 </html>
 ```
 
-### 26实现Function 原型的bind方法，使得以下程序最后能输出“success”
+### 26、实现Function 原型的bind方法，使得以下程序最后能输出“success”
 ```js
 function Animal(name,color){
   this.name = name;
@@ -2134,7 +2134,7 @@ if (
 }
 ```
 
-### 27使用 JavaScript 实现 cookie 的设置、读取、删除
+### 27、使用 JavaScript 实现 cookie 的设置、读取、删除
 
 ### 代码实现
 
@@ -2167,7 +2167,7 @@ function delCookie(name) {
 }
 ```
 
-### 28填充代码实现 template 方法
+### 28、填充代码实现 template 方法
 ```js
 var str = "您好，<%=name%>。欢迎来到<%=location%>";
 function template(str) {
@@ -2197,7 +2197,7 @@ compiled({
 ```
 
 
-### 29给 JavaScript 的 String 原生对象添加一个名为 trim 的原型方法，用于截取字符串前后的空白字符
+### 29、给 JavaScript 的 String 原生对象添加一个名为 trim 的原型方法，用于截取字符串前后的空白字符
 
 ### 代码实现
 
@@ -2211,7 +2211,7 @@ console.log('  yd  yd    '.trim())
 ```
 
 
-### 30实现格式化输出，比如输入 999999999，输出 999,999,999
+### 30、实现格式化输出，比如输入 999999999，输出 999,999,999
 
 ### 代码实现
 
@@ -2298,7 +2298,7 @@ console.log(formatNumber(1234567890));
 ```
 
 
-### 31完成一个表达式，验证用户输入是否是电子邮箱
+### 31、完成一个表达式，验证用户输入是否是电子邮箱
 
 ### 代码实现
 
@@ -2383,7 +2383,7 @@ isEmail("cn42du@163.com");
 
 
 
-### 32有这样一个函数 A,要求在不改变原有函数 A 功能以及调用方式的情况下，使得每次调用该函数都能在控制台打印出“HelloWorld”
+### 32、有这样一个函数 A,要求在不改变原有函数 A 功能以及调用方式的情况下，使得每次调用该函数都能在控制台打印出“HelloWorld”
 ```js
 function A() {
   console.log("调用了函数A");
@@ -2468,7 +2468,7 @@ A()
 
 
 
-### 33尾递归实现
+### 33、尾递归实现
 
 ### 什么是尾递归
 
@@ -2520,7 +2520,7 @@ const Fibonacci = (n, pre = 1, current = 1) => {
 
 
 
-### 34请用 JavaScript 代码实现事件代理
+### 34、请用 JavaScript 代码实现事件代理
 
 ### 一、概念理解
 
@@ -2632,7 +2632,7 @@ window.onload = function () {
 }(window, document)
 ```
 
-### 35多个 tab 只对应一个内容框，点击每个 tab 都会请求接口并渲染到内容框，怎么确保频繁点击 tab 但能够确保数据正常显示？
+### 35、多个 tab 只对应一个内容框，点击每个 tab 都会请求接口并渲染到内容框，怎么确保频繁点击 tab 但能够确保数据正常显示？
 
 ### 一、分析
 
@@ -2745,7 +2745,7 @@ getData()
 ```
 
 
-### 36商城的列表页跳转到商品的详情页，详情页数据接口很慢，前端可以怎么优化用户体验？
+### 36、商城的列表页跳转到商品的详情页，详情页数据接口很慢，前端可以怎么优化用户体验？
 
 ### 一、优化简要版
 
@@ -2946,7 +2946,7 @@ imgParentParent.replaceChild(newImgParent, imgParent);
 2. 需要 UI 那边提供三套静态 img 资源
 
 
-### 37如何记录前端再用户浏览器上发生的错误并汇报给服务器？
+### 37、如何记录前端再用户浏览器上发生的错误并汇报给服务器？
 
 ### 一、代码执行的错误捕获
 
@@ -2987,7 +2987,7 @@ imgParentParent.replaceChild(newImgParent, imgParent);
 
 
 
-### 38单点登录实现原理
+### 38、单点登录实现原理
 
 ### 一、什么是单点登录
 
@@ -3055,7 +3055,7 @@ imgParentParent.replaceChild(newImgParent, imgParent);
 4. sso认证中心向所有注册系统发起注销请求，各注册系统销毁局部会话
 5. sso认证中心引导用户到登录页面
 
-### 39请描述下为什么页面需要做优化？并写出常用的页面优化实现方案？
+### 39、请描述下为什么页面需要做优化？并写出常用的页面优化实现方案？
 
 ### 一、为什么需要做优化
 
@@ -3085,7 +3085,7 @@ imgParentParent.replaceChild(newImgParent, imgParent);
 
 
 
-### 40请描述下 JavaScript 中 Scope、Closure、Prototype 概念，并说明 JavaScript 封装、继承实现原理。
+### 40、请描述下 JavaScript 中 Scope、Closure、Prototype 概念，并说明 JavaScript 封装、继承实现原理。
 
 ### 一、Scope
 
@@ -3507,7 +3507,7 @@ function inheritPrototype(subClass,superClass){
 
 `Javascript`中的这些概念，`scope`、`closure`、`prototype`等对于语言的特征来说是基建，他们息息相关，没有哪个更重要，都是非常重要的概念，只有这些基础的东西搞明白了之后，才能去读懂一些框架的源码，甚至去开发一套框架开发一些牛x的开源库。
 
-### 41以最小的改动解决以下代码的错误(可以使用ES6)
+### 41、以最小的改动解决以下代码的错误(可以使用ES6)
 ```js
 const obj = {
   name:"jsCoder",
@@ -3563,15 +3563,15 @@ const obj = {
 obj.say();
 ```
 
-### 42有哪几种方式可以解决跨域问题？(描述对应的原理)
+### 42、有哪几种方式可以解决跨域问题？(描述对应的原理)
 
 
 
-### 43如何实现 a,b 两个变量的交换
+### 43、如何实现 a,b 两个变量的交换
 
 
 
-### 44写出下面代码的输出结果
+### 44、写出下面代码的输出结果
 ```js
 //counter.js
 let counter = 10;
@@ -3585,7 +3585,7 @@ console.log(myCounter);
 
 
 
-### 45写出输出值，并解释为什么
+### 45、写出输出值，并解释为什么
 ```js
 function test(m) {
   m = { v: 5 };
@@ -3597,7 +3597,7 @@ alert(m.v);
 
 
 
-### 46请写出代码执⾏结果，并解释为什么
+### 46、请写出代码执⾏结果，并解释为什么
 ```js
 function fn() {
   console.log(this.length);
@@ -3613,11 +3613,11 @@ person.method(fn, 1);
 
 
 
-### 47函数中的arguments是数组吗？若不是，如何将它转化为真正的数组？
+### 47、函数中的arguments是数组吗？若不是，如何将它转化为真正的数组？
 
 
 
-### 48请写出以下代码的打印结果
+### 48、请写出以下代码的打印结果
 ```js
 if([] == false){console.log(1)};
 if({} == false) {console.log(2)};
@@ -3627,11 +3627,11 @@ if([1] == [1]){console.log(4)};
 
 
 
-### 49列举 3 种强制类型转换和 2 种隐式类型转换
+### 49、列举 3 种强制类型转换和 2 种隐式类型转换
 
 
 
-### 50微任务和宏任务的区别
+### 50、微任务和宏任务的区别
 
 
 ### 微任务和宏任务的区别
@@ -3647,7 +3647,7 @@ if([1] == [1]){console.log(4)};
 
 在挂起任务时，JS引擎会将所有任务按照类别分到这两个队伍中，首先在macrotask的队列中取出第一个任务，执行完毕后取出microtask队列中的所有任务顺序执行；之后再取macrotask任务，周而复始，直至两个队列的任务都取完
 
-### 51有 1000 个 dom，需要更新其中的 100 个，如何操作才能减少 dom 的操作？
+### 51、有 1000 个 dom，需要更新其中的 100 个，如何操作才能减少 dom 的操作？
 
 
 ### 实现方案
@@ -3706,7 +3706,7 @@ js模拟DOM树并对DOM树操作的一种技术。virtual DOM是一个纯js对�
 
 
 
-### 52请编写一个 JavaScript 函数 parseQueryString,它的用途是把 URL 参数解析为一个对象，url="http://iauto360.cn/index.php?key0=0&key1=1&key2=2"
+### 52、请编写一个 JavaScript 函数 parseQueryString,它的用途是把 URL 参数解析为一个对象，url="http://iauto360.cn/index.php?key0=0&key1=1&key2=2"
 
 
 ### 代码实现
@@ -3725,7 +3725,7 @@ function parseQueryString(url){
 parseQueryString("http://iauto360.cn/index.php?key0=0&key1=1&key2=2")
 ```
 
-### 53请列出至少 5 个 JavaScript 常用的内置对象，说明用途
+### 53、请列出至少 5 个 JavaScript 常用的内置对象，说明用途
 
 
 
@@ -3906,7 +3906,7 @@ ECMAScript核心的附加功能，用于支持多语言处理。
 
 - arguments
 
-### 54Promise 有没有解决异步的问题
+### 54、Promise 有没有解决异步的问题
 
 Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用（proxy），充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。
 
@@ -4008,7 +4008,7 @@ async function test() {
 
 
 
-### 55Promise 构造函数是同步还是异步执行，then 呢
+### 55、Promise 构造函数是同步还是异步执行，then 呢
 
 #### promise构造函数是同步执行的，then方法是异步执行的
 
@@ -4080,7 +4080,7 @@ new Promise的时候先执行executor函数，打印出 1、2，Promise在执行
 
 
 
-### 56请手写实现一个拖拽
+### 56、请手写实现一个拖拽
 
 #### 1.原生js实现
 
@@ -4262,7 +4262,7 @@ new Promise的时候先执行executor函数，打印出 1、2，Promise在执行
 </html>
 ```
 
-### 57项目如何管理模块
+### 57、项目如何管理模块
 
 ### 项目如何管理模块
 
@@ -4284,7 +4284,7 @@ new Promise的时候先执行executor函数，打印出 1、2，Promise在执行
 3. **统一性**：多个项目之间应当使用相同的技术选型、UI 框架、脚手架、开发工具、构建工具、测试库、目录规范、代码规范等，相同功能应指定使用固定某一个库
 4. **文档化**：组件项目一定需要相关的文档，应用项目在必要的时候也要形成相应的文档
 
-### 58页面埋点怎么实现
+### 58、页面埋点怎么实现
 
 ### 页面埋点方案
 
@@ -4405,7 +4405,7 @@ return {
 }
 ```
 
-### 59数组里面有 10 万个数据，取第一个元素和第 10 万个元素的时间相差多少
+### 59、数组里面有 10 万个数据，取第一个元素和第 10 万个元素的时间相差多少
 
 ### 解析
 
@@ -4430,7 +4430,7 @@ console.timeEnd('arr100000')
 // arr100000: 0.002685546875ms
 ```
 
-### 60如何加快页面渲染速度，都有哪些方式
+### 60、如何加快页面渲染速度，都有哪些方式
 
 ### 网站性能提升
 
@@ -4461,7 +4461,7 @@ console.timeEnd('arr100000')
 4. 事件代理：利用事件冒泡原理，把函数注册到父级元素上。
 5. 减少页面的重绘和回流。
 
-### 61定时器为什么是不精确的
+### 61、定时器为什么是不精确的
 
 ### 简要回答
 
@@ -4528,7 +4528,7 @@ console.log('After setTimeout');
 
 这是因为即使setTimeout以零的延迟被调用，它也被放置在队列中并计划在下一个机会运行。不是立即。当前执行的代码必须在执行队列中的功能之前完成，因此生成的执行顺序可能与预期的不同
 
-### 62手写实现 apply
+### 62、手写实现 apply
 
 ### 简单模拟实现
 
@@ -4550,7 +4550,7 @@ Function.prototype.myapply = function (context, ...argus) {
 }
 ```
 
-### 63loadsh 深拷贝实现原理
+### 63、loadsh 深拷贝实现原理
 
 ### 源码分析
 
@@ -4805,7 +4805,7 @@ export default assignValue;
   });
 ```
 
-### 64添加原生事件不移除为什么会内存泄露，还有哪些地方会存在内存泄漏
+### 64、添加原生事件不移除为什么会内存泄露，还有哪些地方会存在内存泄漏
 
 ### 添加原生事件的问题
 
@@ -4829,7 +4829,7 @@ button.addEventListener('click', onClick);
 - 脱离DOM的引用(当你保存了一个dom的引用，然后将该dom从html中删除后，你应该将这个引用赋为null，否则GC不会回收，这个dom仍然在内存中。保存 DOM 元素引用的时候，要小心谨慎。
 - 闭包，闭包包含这外面函数的活动对象，无法被GC回收。 
 
-### 65尽可能多的写出判断数组的方法
+### 65、尽可能多的写出判断数组的方法
 
 ### 数组判断方法
 
@@ -4838,7 +4838,7 @@ button.addEventListener('click', onClick);
 - Object.prototype.toString.call(obj)=='Array’，对象的toSting方法；
 - Array.isArray，数组的原生方法；
 
-### 66说下 offsetWith 和 clientWidth、offsetHeight 和 clientHeight 的区别，说说 offsetTop，offsetLeft，scrollWidth、scrollHeight 属性都是干啥的
+### 66、说下 offsetWith 和 clientWidth、offsetHeight 和 clientHeight 的区别，说说 offsetTop，offsetLeft，scrollWidth、scrollHeight 属性都是干啥的
 
 ### 扩展一下
 
@@ -4890,7 +4890,7 @@ button.addEventListener('click', onClick);
 兼容性写法 `var scrollLeft = document.documentElement.scrollLeft || window.pageXOffset || document.body.scrollLeft`
 
 
-### 67请修改代码能跳出死循环
+### 67、请修改代码能跳出死循环
 ```js
 while (1) {
   switch ("yideng") {
@@ -4965,7 +4965,7 @@ test();
 
 
 
-### 68词法作用域和 this 的区别
+### 68、词法作用域和 this 的区别
 
 ### 区别
 
@@ -4979,7 +4979,7 @@ JS 引擎执行一段和当前执行上下文（running execution context）无�
 
 代码执行中，词法环境可能会建立环境记录与 this 的绑定。解析 this 时，从当前上下文中开始直到全局，返回最近可用的 this 绑定。
 
-### 69for..in 和 object.keys 的区别
+### 69、for..in 和 object.keys 的区别
 
 ### 区别
 
@@ -4989,7 +4989,7 @@ for-in 是javaScript中最常见的迭代语句，常常用来枚举对象的属
 
 for-in循环会枚举对象原型链上的可枚举属性，而Object.keys不会
 
-### 70JavaScript 写一个单例模式，可以具体到某一个场景
+### 70、JavaScript 写一个单例模式，可以具体到某一个场景
 
 ### 代码实现
 
@@ -5075,7 +5075,7 @@ storage2.getItem('name')
 storage1 === storage2
 ```
 
-### 71手写实现 call
+### 71、手写实现 call
 
 ### 代码实现
 
@@ -5096,7 +5096,7 @@ Function.prototype.mycall = function (context, ...argus) {
 }
 ```
 
-### 72按照调用实例，实现下面的 Person 方法
+### 72、按照调用实例，实现下面的 Person 方法
 ```js
 Person("Li");
 // 输出： Hi! This is Li!
@@ -5175,7 +5175,7 @@ const Person = name => new PersonGenerator(name);
 Person("helloWorld").sleepFirst(3).sleep(3).eat("little_cute");
 ```
 
-### 73请实现一个 JSON.parse
+### 73、请实现一个 JSON.parse
 
 ### 代码实现
 
@@ -5203,7 +5203,7 @@ parse(jsonStr);
 
 eval 与 Function 都有着动态编译 js 代码的作用，但是在实际的编程中并不推荐使用
 
-### 74实现一个打点计时器
+### 74、实现一个打点计时器
 ```js
 /* 
   1.从start至end,每隔100毫秒console.log一个数字，每次数字增幅为1
@@ -5271,7 +5271,7 @@ setTimeout(() => {
 
 
 
-### 75按要求完成代码
+### 75、按要求完成代码
 ```js
 const timeout = (ms) =>
   new Promise((resolve, reject) => {
@@ -5412,7 +5412,7 @@ mergePromise([ajax1, ajax2, ajax3]).then((data) => {
 ```
 
 
-### 76在一个 ul 里有 10 个 li,实现点击对应的 li,输出对应的下标
+### 76、在一个 ul 里有 10 个 li,实现点击对应的 li,输出对应的下标
 
 ### 代码实现
 
@@ -5475,7 +5475,7 @@ for (let i = 0; len = oli.length, i < len; i++) {
 
 
 
-### 77请手动实现一个浅拷贝
+### 77、请手动实现一个浅拷贝
 
 ### 代码实现
 
@@ -5553,7 +5553,7 @@ for...in语句以任意顺序遍历一个对象自有的、继承的、可枚举
 
 
 
-### 78编写一个 Person 类，并创建两个不同的 Person 对象
+### 78、编写一个 Person 类，并创建两个不同的 Person 对象
 
 ### 代码实现
 
@@ -5593,7 +5593,7 @@ console.log(lilin,lc);
 lilin.run();
 ```
 
-### 79JavaScript 是什么范式语言
+### 79、JavaScript 是什么范式语言
 
 ### 什么是范式
 
@@ -5605,7 +5605,7 @@ lilin.run();
 
 JavaScript® （通常简写为JS）是一种轻量的、解释性的、面向对象的头等函数语言，其最广为人知的应用是作为网页的脚本语言，但同时它也在很多非浏览器环境下使用。**JS是一种动态的基于原型和多范式的脚本语言，支持面向对象、命令式和函数式的编程风格。**
 
-### 80JavaScript 为什么要区分微任务和宏任务
+### 80、JavaScript 为什么要区分微任务和宏任务
 
 ### 为什么要区分微任务和宏任务
 
@@ -5619,7 +5619,7 @@ JavaScript® （通常简写为JS）是一种轻量的、解释性的、面向�
 
 
 
-### 81JavaScript 中如何模拟实现方法的重载
+### 81、JavaScript 中如何模拟实现方法的重载
 
 ### 一、背景知识
 
@@ -5686,7 +5686,7 @@ console.log(methods.add(10,20,30)); //60
 
 
 
-### 82除了 jsonp、postmessage 后端控制，怎么实现跨页面通讯
+### 82、除了 jsonp、postmessage 后端控制，怎么实现跨页面通讯
 
 ### 一、同源页面之间的通信
 
@@ -5708,7 +5708,7 @@ console.log(methods.add(10,20,30)); //60
 - 口口相传模式：window.open + window.opener
 - 基于服务端：Websocket / Comet / SSE 等
 
-### 83使用原型最大的好处
+### 83、使用原型最大的好处
 
 ### 一、原型优缺点简单分析
 
@@ -6024,7 +6024,7 @@ console.log(instance1, instance2)
 
 JavaScript 中描述了原型链的概念，并将原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。简单回顾一下构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。
 
-### 84对作用域和闭包的理解，解释下 let 和 const 的块级作用域
+### 84、对作用域和闭包的理解，解释下 let 和 const 的块级作用域
 
 ### 一、作用域
 
@@ -6111,7 +6111,7 @@ func(); // 报错“Missing initializer in const declaration”
 
 
 
-### 85介绍宏任务和微任务
+### 85、介绍宏任务和微任务
 
 ### 一、任务机制
 
@@ -6153,7 +6153,7 @@ JavaScript是单线程语言。JavaScript任务需要排队顺序执行，如果
 - setImmediate(nodejs) 
 - 可以看到，事件队列中的每一个事件都是一个 macrotask，现在称之为宏任务队列
 
-### 86如何处理异常捕获
+### 86、如何处理异常捕获
 
 ### 一、代码执行的错误捕获
 
@@ -6195,7 +6195,7 @@ JavaScript是单线程语言。JavaScript任务需要排队顺序执行，如果
 
 Vue有 `errorHandler`，React有 `componentDidCatch` 进行错误捕获
 
-### 87介绍 JS 全部数据类型，基本数据类型和引用数据类型的区别
+### 87、介绍 JS 全部数据类型，基本数据类型和引用数据类型的区别
 
 ### 一、JavaScript全部数据类型
 
@@ -6262,7 +6262,7 @@ JavaScript中除了上面的基本类型之外就是引用类型了，也可以�
 
 **引用值:** 对象变量它里面的值是这个对象在堆内存中的内存地址，这一点你要时刻铭记在心！因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。
 
-### 88if([] == 0), [1,2] == "1,2", if([]), [] == 0 具体是怎么对比的
+### 88、if([] == 0), [1,2] == "1,2", if([]), [] == 0 具体是怎么对比的
 
 ### 一、 `if`判断原理
 
@@ -6390,7 +6390,7 @@ ToPrimitive指对象类型类型（如：对象、数组）转换为原始类型
 
 
 
-### 89setInterval 需要注意的点
+### 89、setInterval 需要注意的点
 
 ### setInterval
 
@@ -6466,7 +6466,7 @@ var a = o.fn;
 a();
 ```
 
-### 90介绍 defineProperty 方法，什么时候需要用到
+### 90、介绍 defineProperty 方法，什么时候需要用到
 
 ### Object.defineProperty
 
@@ -6639,7 +6639,7 @@ dom.originX = 5;  //设置中心点X
 
 这样是不是就会好很多了。
 
-### 91JavaScript 执行过程分为哪些阶段
+### 91、JavaScript 执行过程分为哪些阶段
 
 ### JavaScript 执行过程
 
@@ -6653,7 +6653,7 @@ JavaScript 执行分两个阶段：**解析阶段、运行阶段**
 
 **预解析:** 在 JS 代码在正式执行之前，会进行一些解析工作。如寻找 var 声明的变量和 function声明的函数，找到后进行提升，但是在变量提升时不会赋值，因此它的默认值是 undefined。通过提升，函数可以在声明函数体之上进行调用，变量也可以在赋值之前进行输出，只是这时输出的值为 undefined。
 
-### 92介绍 instanceof 原理，并手动实现
+### 92、介绍 instanceof 原理，并手动实现
 
 ### instanceof
 
@@ -6677,7 +6677,7 @@ function instanceof(left, right) {
 }
 ```
 
-### 93介绍 class 和 ES5 的类以及区别
+### 93、介绍 class 和 ES5 的类以及区别
 
 ### ES5的类
 
@@ -6758,7 +6758,7 @@ Parent.prototype = {
 
 所有原型方法属性都可用Object.getOwnPropertyNames(Point.prototype)访问到
 
-### 94Array 是 Object 类型吗
+### 94、Array 是 Object 类型吗
 
 ### Array
 
@@ -6800,7 +6800,7 @@ a.__proto__.__proto__.__proto__
 
 
 
-### 95setTimeout(1)和 setTimeout(2)之间的区别
+### 95、setTimeout(1)和 setTimeout(2)之间的区别
 
 ###  区别
 
@@ -6832,39 +6832,39 @@ setTimeout 有一个显著的缺陷在于时间是不精确的，setTimeout 只�
 
 
 
-### 96Async/Await 怎么实现
+### 96、Async/Await 怎么实现
 
 
 
-### 97ES6 中 let 块作用域是怎么实现的
+### 97、ES6 中 let 块作用域是怎么实现的
 
 
 
-### 98formData 和原生的 ajax 有什么区别
+### 98、formData 和原生的 ajax 有什么区别
 
 
 
-### 99介绍下表单提交，和 formData 有什么关系
+### 99、介绍下表单提交，和 formData 有什么关系
 
 
 
-### 100如何对相对路径引用进行优化
+### 100、如何对相对路径引用进行优化
 
 
 
-### 101介绍 localstorage 的 api
+### 101、介绍 localstorage 的 api
 
 
 
-### 102使用闭包特权函数的使用场景
+### 102、使用闭包特权函数的使用场景
 
 
 
-### 103Promise 和 setTimeout 的区别
+### 103、Promise 和 setTimeout 的区别
 
 
 
-### 104请写出正确的执行结果
+### 104、请写出正确的执行结果
 ```js
 var yideng = {
   bar: function () {
@@ -6879,7 +6879,7 @@ var yideng = {
 
 
 
-### 105请写出正确的执行结果
+### 105、请写出正确的执行结果
 ```js
 function test() {
   console.log("out");
@@ -6896,7 +6896,7 @@ function test() {
 
 
 
-### 106请写出正确的执行结果
+### 106、请写出正确的执行结果
 ```js
 var x = [typeof x, typeof y][1];
 typeof x;
@@ -6904,7 +6904,7 @@ typeof x;
 
 
 
-### 107请写出正确的执行结果
+### 107、请写出正确的执行结果
 ```js
 (function (x) {
   delete x;
@@ -6914,7 +6914,7 @@ typeof x;
 
 
 
-### 108请写出正确的执行结果
+### 108、请写出正确的执行结果
 ```js
 var x = 1;
 if (function f() {}) {
@@ -6925,7 +6925,7 @@ x;
 
 
 
-### 109请写出正确的执行结果
+### 109、请写出正确的执行结果
 ```js
 function f() {
   return f;
@@ -6935,7 +6935,7 @@ new f() instanceof f;
 
 
 
-### 110请写出代码正确执行结果，并解释原因
+### 110、请写出代码正确执行结果，并解释原因
 ```js
 Object.prototype.a = "a";
 Function.prototype.a = "a1";
@@ -6946,7 +6946,7 @@ console.log(yideng.a);
 
 
 
-### 111请写出正确的执行结果
+### 111、请写出正确的执行结果
 ```js
 var yideng = [0];
 if (yideng) {
@@ -6958,7 +6958,7 @@ if (yideng) {
 
 
 
-### 112请写出正确的执行结果
+### 112、请写出正确的执行结果
 ```js
 function yideng() {
   return;
@@ -6972,7 +6972,7 @@ console.log(result.a);
 
 
 
-### 113请写出正确的执行结果
+### 113、请写出正确的执行结果
 ```html
 <script>
   //使用未定义的变量yideng
@@ -6986,7 +6986,7 @@ console.log(result.a);
 
 
 
-### 114请写出正确的执行结果
+### 114、请写出正确的执行结果
 ```js
 var yideng = Array(3);
 yideng[0] = 2;
@@ -6998,21 +6998,21 @@ console.log(result);
 
 
 
-### 115请写出代码正确执行结果
+### 115、请写出代码正确执行结果
 ```js
 [1 < 2 < 3, 3 < 2 < 1];
 ```
 
 
 
-### 116请写出代码正确执行结果
+### 116、请写出代码正确执行结果
 ```js
 2 == [[[2]]];
 ```
 
 
 
-### 117计算以上字节每位 ✈️ 的起码点，并描述这些字节的起码点代表什么
+### 117、计算以上字节每位 ✈️ 的起码点，并描述这些字节的起码点代表什么
 ```js
 console.log("✈️".length);
 // 1.计算以上字节每位✈️的起码点
@@ -7021,7 +7021,7 @@ console.log("✈️".length);
 
 
 
-### 118请写出代码正确执行结果，并解释原因
+### 118、请写出代码正确执行结果，并解释原因
 ```js
 var yidenga = Function.length,
   yidengb = new Function().length;
@@ -7030,7 +7030,7 @@ console.log(yidenga === yidengb);
 
 
 
-### 119请写出代码正确执行结果
+### 119、请写出代码正确执行结果
 ```js
 var length = 10;
 function fn() {
@@ -7048,7 +7048,7 @@ yideng.method(fn, 1);
 
 
 
-### 120请写出代码正确执行结果，并解释原因
+### 120、请写出代码正确执行结果，并解释原因
 ```js
 var yi = new Date("2018-08-20"),
   deng = new Date(2018, 08, 20);
@@ -7057,7 +7057,7 @@ var yi = new Date("2018-08-20"),
 
 
 
-### 121请写出代码正确执行结果
+### 121、请写出代码正确执行结果
 ```js
 for (
   let i = (setTimeout(() => console.log("a->", i)), 0);
@@ -7070,14 +7070,14 @@ for (
 
 
 
-### 122请写出代码正确执行结果，并解释原因
+### 122、请写出代码正确执行结果，并解释原因
 ```js
 [typeof null, null instanceof Object];
 ```
 
 
 
-### 123请问当前 textarea 文本框展示的内容是什么？
+### 123、请问当前 textarea 文本框展示的内容是什么？
 ```html
 <textarea maxlength="10" id="yideng"></textarea>
 <script>
@@ -7087,7 +7087,7 @@ for (
 
 
 
-### 124请写出代码正确执行结果
+### 124、请写出代码正确执行结果
 ```js
 function sidEffecting(ary) {
   arr[0] = arr[2];
@@ -7102,7 +7102,7 @@ yideng(1, 1, 1);
 
 
 
-### 125请写出代码正确执行结果
+### 125、请写出代码正确执行结果
 ```js
 yideng();
 var flag = true;
@@ -7119,7 +7119,7 @@ if (flag) {
 
 
 
-### 126请写出代码正确执行结果，并解释为什么
+### 126、请写出代码正确执行结果，并解释为什么
 ```js
 var min = Math.min(),
   max = Math.max();
@@ -7128,14 +7128,14 @@ console.log(min < max);
 
 
 
-### 127请写出代码正确执行结果，并解释原因？
+### 127、请写出代码正确执行结果，并解释原因？
 ```js
 console.log("hello" + (1 < 2) ? "word" : "me");
 ```
 
 
 
-### 128请写出代码正确执行结果，并解释原因？
+### 128、请写出代码正确执行结果，并解释原因？
 ```js
 var a = (b = 1);
 (function () {
@@ -7146,7 +7146,7 @@ console.log(a, b);
 
 
 
-### 129请写出代码正确执行结果，并解释原因？
+### 129、请写出代码正确执行结果，并解释原因？
 ```js
 if ([] instanceof Object) {
   console.log(typeof null);
@@ -7157,7 +7157,7 @@ if ([] instanceof Object) {
 
 
 
-### 130请写出代码正确执行结果，并解释原因？
+### 130、请写出代码正确执行结果，并解释原因？
 ```js
 var obj = {};
 obj.name = "first";
@@ -7168,7 +7168,7 @@ console.log(obj.name);
 
 
 
-### 131请写出代码正确执行结果，并解释原因？
+### 131、请写出代码正确执行结果，并解释原因？
 ```js
 function say(word) {
   let word = "hello";
@@ -7179,7 +7179,7 @@ say("hello Lili");
 
 
 
-### 132请写出代码的正确执行结果，并解释原因？
+### 132、请写出代码的正确执行结果，并解释原因？
 ```js
 function fun(n, o) {
   console.log(o);
@@ -7194,39 +7194,39 @@ var b = fun(0).fun(1).fun(2).fun(3);
 
 
 
-### 133怎么判断引用类型数据，兼容判断原始类型数据呢？
+### 133、怎么判断引用类型数据，兼容判断原始类型数据呢？
 
 
 
-### 134分别对以下数组进行去重，1:[1,'1',2,'2',3]，2:[1,[1,2,3['1','2','3'],4],5,6]
+### 134、分别对以下数组进行去重，1:[1,'1',2,'2',3]，2:[1,[1,2,3['1','2','3'],4],5,6]
 
 
 
-### 135简述 JavaScript 中的函数的几种调用方式
+### 135、简述 JavaScript 中的函数的几种调用方式
 
 
 
-### 136说一下 let、const 的实现，动手实现一下
+### 136、说一下 let、const 的实现，动手实现一下
 
 
 
-### 137scrollview 如何进行又能优化(例如 page=100 时，往上滚动)
+### 137、scrollview 如何进行又能优化(例如 page=100 时，往上滚动)
 
 
 
-### 138原生 JavaScript 获取 ul 中的第二个 li 里边的 p 标签的内容
+### 138、原生 JavaScript 获取 ul 中的第二个 li 里边的 p 标签的内容
 
 
 
-### 139数组截取插入 splice，push 返回值，数组的栈方法、队列方法、排序方法、操作方法、迭代方法说一下
+### 139、数组截取插入 splice，push 返回值，数组的栈方法、队列方法、排序方法、操作方法、迭代方法说一下
 
 
 
-### 140判断一个变量的类型，写个方法用 Object.prototype.toString 判断传入数据的类型
+### 140、判断一个变量的类型，写个方法用 Object.prototype.toString 判断传入数据的类型
 
 
 
-### 141以下代码输出什么？
+### 141、以下代码输出什么？
 ```js
 setTimeout(function () {
   console.log(1);
@@ -7245,23 +7245,23 @@ console.log(5);
 
 
 
-### 142switch case，case 具体是怎么比较的，哪些情况下会走到 default
+### 142、switch case，case 具体是怎么比较的，哪些情况下会走到 default
 
 
 
-### 143说下 typeof()各种类型的返回值？instanceof 呢？
+### 143、说下 typeof()各种类型的返回值？instanceof 呢？
 
 
 
-### 144genertor 的实现原理
+### 144、genertor 的实现原理
 
 
 
-### 145判断是否是数组的方法
+### 145、判断是否是数组的方法
 
 
 
-### 146给出的两行代码为什么这么输出
+### 146、给出的两行代码为什么这么输出
 ```js
 var s = "laohu";
 s[0] = 1;
@@ -7274,11 +7274,11 @@ console.log(s); // laohu2020
 
 
 
-### 147对 service worker 的理解
+### 147、对 service worker 的理解
 
 
 
-### 148promise 里面和 then 里面执行有什么区别
+### 148、promise 里面和 then 里面执行有什么区别
 
 
 - 构造函数里面是同步执行的，无法取消
@@ -7301,7 +7301,7 @@ new Promise(function (resolve, reject) {
 
 
 
-### 149动画性能如何检测
+### 149、动画性能如何检测
 
 
 ####  1.Chrome 提供给开发者的功能十分强大，在开发者工具中，我们进行如下选择调出 FPS meter 选项：
@@ -7411,7 +7411,7 @@ loop();
 
 这个方法计算的结果和真实的帧率是存在误差的，因为它是将每两次主线程执行 javascript 的时间间隔当成一帧，而非上面说的主线程加合成线程所消耗的时间为一帧。但是对于现阶段而言，算是一种可取的方法。
 
-### 150一个 dom 必须要操作几百次，该如何解决，如何优化？
+### 150、一个 dom 必须要操作几百次，该如何解决，如何优化？
 
 
 ### 解决方案
@@ -7438,7 +7438,7 @@ loop();
 
 Virtual DOM本质是一个JS对象，DOM diff之后最后再批量的更新真实的DOM结构；
 
-### 151概述异步编程模型
+### 151、概述异步编程模型
 
 
 ### 异步编程模型
@@ -7653,7 +7653,7 @@ async function read2() {
 readAll() // 2.txt 3.txt
 ```
 
-### 152修改代码不造成死循环
+### 152、修改代码不造成死循环
 ```js
 while (1) {
   console.log(Math.random());
@@ -7700,7 +7700,7 @@ while(1){
 }
 ```
 
-### 153用 html、css、js 模拟实现一个下拉框，使得下拉框在各个浏览器下的样式和行为完全一致，说出你的设计方案，并且重点说明功能设计时要考虑的因素。
+### 153、用 html、css、js 模拟实现一个下拉框，使得下拉框在各个浏览器下的样式和行为完全一致，说出你的设计方案，并且重点说明功能设计时要考虑的因素。
 
 
 ### 代码实现
@@ -7794,7 +7794,7 @@ while(1){
 </script>
 ```
 
-### 154promise 如何实现 then 处理，动手实现 then
+### 154、promise 如何实现 then 处理，动手实现 then
 
 
 ### 代码实现
@@ -7975,7 +7975,7 @@ Promise.resolvePromise = function (promise2, x, resolve, reject) {
 
 ```
 
-### 155请实现一个 JSON.stringfy
+### 155、请实现一个 JSON.stringfy
 
 
 ### 代码实现
@@ -8133,7 +8133,7 @@ function stringify(jsonObj) {
 
 
 
-### 156手写 EventEmitter 实现
+### 156、手写 EventEmitter 实现
 
 
 ### 代码实现
@@ -8234,7 +8234,7 @@ event.emit('sm300', 1000); // 5. fn2-sm200-1000,
 event.emit('sm300', 1000); //
 ```
 
-### 157写一个函数打乱一个数组，传入一个数组，返回一个打乱的新数组
+### 157、写一个函数打乱一个数组，传入一个数组，返回一个打乱的新数组
 
 
 ### 代码实现
@@ -8268,7 +8268,7 @@ function shuffle(arr) {
 shuffle(arr);
 ```
 
-### 158平时都用到了哪些设计模式
+### 158、平时都用到了哪些设计模式
 
 
 ### 一、设计模式
@@ -8374,7 +8374,7 @@ let car = factory.manage('createCar');
 let mask = factory.manage('mask');
 ```
 
-### 159说一下栈和堆的区别，垃圾回收时栈和堆的区别
+### 159、说一下栈和堆的区别，垃圾回收时栈和堆的区别
 
 
 ### 一、栈和堆区别
@@ -8407,7 +8407,7 @@ let mask = factory.manage('mask');
 - 栈内存中的数据只要运行结束，则直接回收。
 - 堆内存中的对象回收标准是否可达，在 V8 中 对象先分配到新生代的 From 中，如果不可达直接释放，如果可达，就复制到 To 中，然后将 To 和 From 互换。当多次复制后依然没有回收，则放入老生代中，进行标记回收。之后将内存碎片进行整合放到一端。
 
-### 160JavaScript 基本数据类型都有哪些？用 typeOf 判断分别显示什么？
+### 160、JavaScript 基本数据类型都有哪些？用 typeOf 判断分别显示什么？
 
 
 ### 一、基本数据类型
@@ -8491,7 +8491,7 @@ Object.prototype.toString.call(undefined) =>  "[object Undefined]"
 
 
 
-### 161单例、工厂、观察者项目中实际场景
+### 161、单例、工厂、观察者项目中实际场景
 
 
 ### 一、单例模式(Singleton)
@@ -8700,7 +8700,7 @@ event.trigger('click');
 5. NodeJs自定义事件
 
 
-### 162判断一个变量的类型，写个方法用 Object.prototype.toString 判断传入数据的类型？Object.prototype.toString.call(Symbol) 返回什么？
+### 162、判断一个变量的类型，写个方法用 Object.prototype.toString 判断传入数据的类型？Object.prototype.toString.call(Symbol) 返回什么？
 
 
 ### 一、Object.prototype.toString 
@@ -8739,7 +8739,7 @@ Object.prototype.toString.call(Symbol);
 //"[object Function]"
 ```
 
-### 163请解释 JSONP 的工作原理
+### 163、请解释 JSONP 的工作原理
 
 
 ### jsonp原理
@@ -8814,7 +8814,7 @@ app.use(async (ctx, next) => {
 
 这样浏览器会调用callback函数，并传递解析后json对象作为参数，完成一次数据交互。
 
-### 164addEventListener 再 removeListener 会不会造成内存泄漏
+### 164、addEventListener 再 removeListener 会不会造成内存泄漏
 
 
 ### addEventListener
@@ -8845,13 +8845,13 @@ button.addEventListener('click', onClick);
 如今，现代的浏览器（包括 IE 和 Microsoft Edge）使用了更先进的垃圾回收算法，已经可以正确检测和处理循环引用了。换言之，回收节点内存时，不必非要调用 removeEventListener 了。
 
 
-### 165面向对象的三要素是啥？都是啥意思？
+### 165、面向对象的三要素是啥？都是啥意思？
 
 - **封装：** 把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏
 - **继承：** 使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展
 - **多态：** 一个类实例的相同方法在不同情形有不同表现形式。多态机制使具有不同内部结构的对象可以共享相同的外部接口
 
-### 166使用原型链如何实现继承
+### 166、使用原型链如何实现继承
 
 ### 继承
 
@@ -8895,7 +8895,7 @@ alert(instance.getFatherValue());//true
 - 寄生式继承
 - 寄生组合式继承
 
-### 167写出代码执行结果
+### 167、写出代码执行结果
 ```js
 new Promise((resolve, reject) => {
   reject("1");
@@ -8920,7 +8920,7 @@ catch() 方法返回一个Promise，并且处理拒绝的情况。它的行为�
 
 所以输出1，2
 
-### 168Promise.resolve(obj)，obj 有几种可能
+### 168、Promise.resolve(obj)，obj 有几种可能
 
 ### 有三种可能
 
@@ -8932,7 +8932,7 @@ Promise.resolve(value)方法返回一个以给定值解析后的 Promise 对象�
 
 故obj有三种可能，obj可以是正常值，可以是promise对象，可以是thenable。
 
-### 169搜索请求如何处理？搜索请求中文如何请求？
+### 169、搜索请求如何处理？搜索请求中文如何请求？
 
 ### 搜索请求处理
 
@@ -8959,7 +8959,7 @@ function debounce(fn, wait) {
 一般是通过encodeURI或encodeURIComponent方法将对应的中文进行编码;
 
 
-### 170介绍下原型链
+### 170、介绍下原型链
 
 ### 原型链
 
@@ -8976,7 +8976,7 @@ function debounce(fn, wait) {
 3. 所有的原型对象都有"constructor"属性，该属性对应创建所有指向该原型的实例的构造函数
 4. 函数对象和原型对象通过"prototype"和"constructor"属性进行相互关联
 
-### 171前后端通信使用什么方案
+### 171、前后端通信使用什么方案
 
 ### 前后端通信方案
 
@@ -9003,7 +9003,7 @@ CORS是一个 W3C 标准，跨域资源共享（CORS ）是一种网络浏览器
 
 它是一个妥协，有更大的灵活性，但比起简单地允许所有这些的要求来说更加安全。简言之， CORS 就是为了让 AJAX 可以实现可控的跨域访问而生的。
 
-### 172页面上生成一万个 button，并且绑定事件，如何做（JS 原生操作 DOM）？循环绑定时的 index 是多少，为什么，怎么解决？
+### 172、页面上生成一万个 button，并且绑定事件，如何做（JS 原生操作 DOM）？循环绑定时的 index 是多少，为什么，怎么解决？
 
 ### 具体实现
 
@@ -9066,7 +9066,7 @@ document.getElementsByClassName('btns')[0].addEventListener('click', function (e
 
 注意一点就是不要阻止冒泡事件!
 
-### 173异步请求，低版本 fetch 如何低版本适配
+### 173、异步请求，低版本 fetch 如何低版本适配
 
 ### 低版本适配处理
 
@@ -9079,7 +9079,7 @@ document.getElementsByClassName('btns')[0].addEventListener('click', function (e
 - isomorphic-fetch
 - fetch-polyfill2
 
-### 174使用正则去掉 Dom 中的内联样式
+### 174、使用正则去掉 Dom 中的内联样式
 
 ### 代码实现
 
@@ -9091,7 +9091,7 @@ str= str.replace(reg1, '');
 console.log('del style', str);
 ```
 
-### 175介绍 Immuable
+### 175、介绍 Immuable
 
 ### 一、什么是Immutable Data
 
@@ -9764,7 +9764,7 @@ map = map.withMutations((m) => {
 
 虽然这里的时间复杂度是线性的，考虑到发生hash冲突的概率很低，所以时间复杂度的增加可以忽略不计。
 
-### 176jsonp 为什么不支持 post 方法
+### 176、jsonp 为什么不支持 post 方法
 
 ### 一、jsonp原理
 
@@ -9824,7 +9824,7 @@ app.use(async (ctx, next) => {
 
 规范要求，对于会给服务器产生副作用的请求（除GET以外的别的HTT请求、或者搭配某种MIME类型的POST），服务器都会使用 OPTIONS 发送一个 预检请求，来获知服务器是否允许该跨域请求。
 
-### 177介绍 koa2，原理是什么？
+### 177、介绍 koa2，原理是什么？
 
 ### Koa2
 
@@ -10010,7 +10010,7 @@ function compose(middleware) {
 Koa的中间件支持普通函数，返回一个Promise的函数，以及async函数。由于generator函数中间件在新的版本中将不再支持，因此不建议使用。
 
 
-### 178JavaScript 里垃圾回收机制是什么，常用的是哪种，怎么处理的
+### 178、JavaScript 里垃圾回收机制是什么，常用的是哪种，怎么处理的
 
 ### JavaScript中的垃圾回收
 
@@ -10082,39 +10082,39 @@ scavenge算法,mark-sweep及mark-compact都会导致stop-the-world（全停顿�
 
 
 
-### 179addEventListener 的第三个参数的作用
+### 179、addEventListener 的第三个参数的作用
 
 
 
-### 180获取 id 为 netease 节点下所有的 checkbox 子元素(不用框架，注意兼容)
+### 180、获取 id 为 netease 节点下所有的 checkbox 子元素(不用框架，注意兼容)
 
 
 
-### 181如何获取一个对象的深度
+### 181、如何获取一个对象的深度
 
 
 
-### 182说一下 splice 和 slice 的功能用法
+### 182、说一下 splice 和 slice 的功能用法
 
 
 
-### 183函数中的 this 有几种
+### 183、函数中的 this 有几种
 
 
 
-### 184如何同时获取 html 中的 h1,h2,h3,h4,h5,h6 中的内容
+### 184、如何同时获取 html 中的 h1,h2,h3,h4,h5,h6 中的内容
 
 
 
-### 185JavaScript 的执行流程
+### 185、JavaScript 的执行流程
 
 
 
-### 186IOC 是啥，应用场景是啥？
+### 186、IOC 是啥，应用场景是啥？
 
 
 
-### 187写出代码执行的打印结果
+### 187、写出代码执行的打印结果
 ```js
 function a(obj) {
   obj.a = 2;
@@ -10128,7 +10128,7 @@ console.log(obj);
 
 
 
-### 188实现函数
+### 188、实现函数
 ```js
 d1,,,
 d2,,,
@@ -10139,139 +10139,139 @@ d3,,,
 
 
 
-### 189怎么实现 this 对象的深拷贝
+### 189、怎么实现 this 对象的深拷贝
 
 
 
-### 190使用 canvas 绘图时如何组织成通用组件
+### 190、使用 canvas 绘图时如何组织成通用组件
 
 
 
-### 191介绍中介者模式
+### 191、介绍中介者模式
 
 
 
-### 192介绍 service worker
+### 192、介绍 service worker
 
 
 
-### 193介绍事件代理以及优缺点，主要解决什么问题
+### 193、介绍事件代理以及优缺点，主要解决什么问题
 
 
 
-### 194介绍下 this 的各种情况
+### 194、介绍下 this 的各种情况
 
 
 
-### 195使用路由时出现问题如何解决
+### 195、使用路由时出现问题如何解决
 
 
 
-### 196介绍 AST（Abstract Syntax Tree）抽象语法树
+### 196、介绍 AST（Abstract Syntax Tree）抽象语法树
 
 
 
-### 197== 和 ===的区别，什么情况下用相等==
+### 197、== 和 ===的区别，什么情况下用相等==
 
 
 
-### 198bind、call、apply 的区别
+### 198、bind、call、apply 的区别
 
 
 
-### 199介绍暂时性死区
+### 199、介绍暂时性死区
 
 
 
-### 200ES6 中的 map 和原生的对象有什么区别
+### 200、ES6 中的 map 和原生的对象有什么区别
 
 
 
-### 201对纯函数的理解
+### 201、对纯函数的理解
 
 
 
-### 202介绍 JSX
+### 202、介绍 JSX
 
 
 
-### 203如何设计一个 localStorage，保证数据的实效性
+### 203、如何设计一个 localStorage，保证数据的实效性
 
 
 
-### 204实现 sum 方法，使 sum(x)(y),sum(x,y)返回的结果相同
+### 204、实现 sum 方法，使 sum(x)(y),sum(x,y)返回的结果相同
 
 
 
-### 205两个对象如何比较
+### 205、两个对象如何比较
 
 
 
-### 206介绍 dom 树对比
+### 206、介绍 dom 树对比
 
 
 
-### 207如何设计状态树
+### 207、如何设计状态树
 
 
 
-### 208Ajax 发生跨域要设置什么（前端）
+### 208、Ajax 发生跨域要设置什么（前端）
 
 
 
-### 209加上 CORS 之后从发起到请求正式成功的过程
+### 209、加上 CORS 之后从发起到请求正式成功的过程
 
 
 
-### 210JavaScript 变量类型分为几种，区别是什么
+### 210、JavaScript 变量类型分为几种，区别是什么
 
 
 
-### 211ES5 和 ES6 有什么区别
+### 211、ES5 和 ES6 有什么区别
 
 
 
-### 212取数组的最大值（ES5、ES6）
+### 212、取数组的最大值（ES5、ES6）
 
 
 
-### 213some、every、find、filter、map、forEach 有什么区别
+### 213、some、every、find、filter、map、forEach 有什么区别
 
 
 
-### 214页面上有一个 input，还有一个 p 标签，改变 input 后 p 标签就跟着变化，如何处理？监听 input 的哪个事件，在什么时候触发？
+### 214、页面上有一个 input，还有一个 p 标签，改变 input 后 p 标签就跟着变化，如何处理？监听 input 的哪个事件，在什么时候触发？
 
 
 
-### 215Promise 和 async/await，和 Callback 有什么区别
+### 215、Promise 和 async/await，和 Callback 有什么区别
 
 
 
-### 216项目中对于用户体验做过什么优化
+### 216、项目中对于用户体验做过什么优化
 
 
 
-### 217RESTful 常用的 Method
+### 217、RESTful 常用的 Method
 
 
 
-### 218如何实现 H5 手机端的适配
+### 218、如何实现 H5 手机端的适配
 
 
 
-### 219如何去除 url 中的#号
+### 219、如何去除 url 中的#号
 
 
 
-### 220介绍 webp 这个图片文件格式
+### 220、介绍 webp 这个图片文件格式
 
 
 
-### 221ajax 如何处理跨域？CORSr 如何设置？
+### 221、ajax 如何处理跨域？CORSr 如何设置？
 
 
 
-### 222Async 里面有多个 await 请求，可以怎么优化
+### 222、Async 里面有多个 await 请求，可以怎么优化
 
 
 #### 1.可以使俩个请求并行处理
@@ -10328,7 +10328,7 @@ const showColumnInfo = async (id) => {
 showColumnInfo() // 2630.869ms
 ```
 
-### 223介绍观察者模式
+### 223、介绍观察者模式
 
 
 ### 观察者模式
@@ -10352,7 +10352,7 @@ showColumnInfo() // 2630.869ms
 2. 如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃。 
 3. 观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化。
 
-### 224表单可以跨域吗
+### 224、表单可以跨域吗
 
 
 ### 答案
@@ -10361,7 +10361,7 @@ showColumnInfo() // 2630.869ms
 
 ajax实质是脚本运行, 受到同源策略的规范;
 
-### 225nextTick 是在本次循环执行，还是在下次，setTimeout(() => {}, 0)呢？
+### 225、nextTick 是在本次循环执行，还是在下次，setTimeout(() => {}, 0)呢？
 
 
 ### 答案
@@ -10384,7 +10384,7 @@ nextTick 在本次循环执行, 且全部执行, setTimeout 在下次循环执�
 - 在一次event loop中，microtask在这一次循环中是一直取一直取，直到清空microtask队列，而macrotask则是一次循环取一次。
 - 如果执行事件循环的过程中又加入了异步任务，如果是macrotask，则放到macrotask末尾，等待下一轮循环再执行。如果是microtask，则放到本次event loop中的microtask任务末尾继续执行。直到microtask队列清空。
 
-### 226通过什么做到并发请求
+### 226、通过什么做到并发请求
 
 
 ### 实现方式
@@ -10407,7 +10407,7 @@ JavaScript是解析性语言，代码按照编码顺序一行一行被压进stac
 
 4、主线程不断重复上面的第三步。
 
-### 227说一下变量的作用域链
+### 227、说一下变量的作用域链
 
 
 ### 变量的作用域链
@@ -10450,7 +10450,7 @@ handle(5);
 
 函数执行时，将当前的函数的VO放在链表开头，后面依次是上层函数，最后是全局对象。变量查找则依次从链表的顶端开始。JS有个内部属性`[[scope]]`，这个属性包含了函数的作用域对象的集合，这个集合就称为函数的作用域链。它决定了，哪些变量或者函数能在当前函数中被访问，以及它的访问顺序。
 
-### 228观察者和订阅-发布的区别，各自用在哪里
+### 228、观察者和订阅-发布的区别，各自用在哪里
 
 
 ### 区别
@@ -10487,7 +10487,7 @@ handle(5);
 - 二是声明对应的回调方法
 - 三是触发条件；触发条件为对应的事件类型。前端DOM的事件系统本质也是发布-订阅模式，而我们在业务处理中所应有的模式也与此类似，只不过发布订阅模式应用的是自定义事件类型，可以自定义。
 
-### 229写一个匹配 Html 标签的正则
+### 229、写一个匹配 Html 标签的正则
 
 
 ### 代码实现
@@ -10500,7 +10500,7 @@ var regHtml =/<\s*\/?\s*[a-zA-z_]([^>]*?["][^"]*["])*[^>"]*>/g;
 console.log('test html <>', str1.match(regHtml));
 ```
 
-### 230写一个匹配 ip 地址的正则
+### 230、写一个匹配 ip 地址的正则
 
 
 ### 代码实现
@@ -10511,7 +10511,7 @@ var regIp = /^((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\
 console.log('test 192.168.4.154', regIp.test('192.168.4.154'));
 ```
 
-### 231reduce 函数的功能，如何实现的，动手实现一下
+### 231、reduce 函数的功能，如何实现的，动手实现一下
 
 
 ### 代码实现
@@ -10539,7 +10539,7 @@ var res = arr1.myReduce(function (sum, item) {
 console.log(res);
 ```
 
-### 232对 async、await 的理解，内部原理是怎样的？
+### 232、对 async、await 的理解，内部原理是怎样的？
 
 
 ### 一、理解
@@ -10615,7 +10615,7 @@ function spawn(genF){
 ```
 
 
-### 233new 的实现原理，动手实现一个 new
+### 233、new 的实现原理，动手实现一个 new
 
 
 ### new做了什么
@@ -10695,7 +10695,7 @@ function newOperator(ctor){
 }
 ```
 
-### 234JavaScript 异步解决方案的发展历程以及优缺点
+### 234、JavaScript 异步解决方案的发展历程以及优缺点
 
 
 ### JavaScript 异步解决方案发展历程
@@ -10713,7 +10713,7 @@ function newOperator(ctor){
   - 优点：代码清晰，不需链式调用就可以处理回调地狱的问题；错误可以被 try catch。
   - 缺点：控制流程复杂，成本较高。
 
-### 235base64 为什么能提升性能，缺点
+### 235、base64 为什么能提升性能，缺点
 
 
 ### base64
@@ -10736,7 +10736,7 @@ base64减少请求数量，是这几年的一个优秀性能建议。虽然如�
 
 2、页面解析 CSS 生成的 CSSOM 时间增加 Base64 跟 CSS 混在一起，大大增加了浏览器需要解析 CSS 树的耗时。其实解析 CSS 树的过程是很快的，一般在几十微妙到几毫秒之间。 CSS 对象模型 (CSSOM)：CSSOM 是一个建立在 web 页面上的 CSS 样式的映射，它和 DOM 类似，但是只针对 CSS 而不是 HTML。 CSSOM 生成过程大致是，解析 HTML ，在文档的 head 部分遇到了一个 link 标记，该标记引用一个外部 CSS 样式表，下载该样式表后根据上述过程生成 CSSOM 树。 这里我们要知道的是，CSSOM 阻止任何东西渲染，（意味着在 CSS 没处理好之前所有东西都不会展示），而如果 CSS 文件中混入了 Base64，那么（因为文件体积的大幅增长）解析时间会增长到十倍以上。 而且，最重要的是，增加的解析时间全部都在关键渲染路径上。 所以，当我们需要使用到 Base64 技术的时，一定要意识到上述的问题，有取舍的进行使用。
 
-### 236`[] == ![]`为什么
+### 236、`[] == ![]`为什么
 
 #### 简单表达
 
@@ -10771,7 +10771,7 @@ Number('') -> 返回的是 0
 相当于 0 == 0 自然就返回 true
 
 
-### 237讲一下函数式编程
+### 237、讲一下函数式编程
 
 #### 函数式编程描述
 
@@ -10820,7 +10820,7 @@ function checkAge(age){
 
 函数式编程是一种编程范式，为我们提供了另一种抽象和思考方式。当然在处理可变状态和处理IO的时候，函数式编程虽然可以通过引入变量来解决，但是其实函数式编程并不太适合处理这种情况。
 
-### 238说一下 base64 的编码方式
+### 238、说一下 base64 的编码方式
 
 #### base64编码
 
@@ -10836,7 +10836,7 @@ Base64是传输8Bit字节码的编码方式，Base64可以将ASCII字符串或�
 
 因为标准的 Base64 会有 `+`和`\`在 URL 中不能直接做参数，于是出现了一种 "url safe"的 Base64，将 `+` 和 `\` 转换为 `-` 和 `_`。因为 `=` 用在 URL 和 Cookie 会有歧义，所以很多 Base64 会把 `=` 去掉。由于 Base64 的长度永远是 4 的倍数，所以只要加上 `=` 把长度变为 4 的倍数，就可以解码。
 
-### 239说一下 ajax/axios/fetch 的区别
+### 239、说一下 ajax/axios/fetch 的区别
 
 #### 1）ajax
 
@@ -10891,7 +10891,7 @@ fetch的优势主要优势：
 
 现在Jquery老迈笨拙，fetch年轻稚嫩，只有Axios正当其年！
 
-### 240es6 类继承中 super 的作用
+### 240、es6 类继承中 super 的作用
 
 #### 1.概念
 
@@ -11056,7 +11056,7 @@ B.m() // 3
 
 > tips：注意，使用`super`的时候，必须显式指定是作为函数、还是作为对象使用，否则会报错。
 
-### 241number 为什么会出现精度损失，怎样避免
+### 241、number 为什么会出现精度损失，怎样避免
 
 ### 精度损失原因分析
 
@@ -11087,7 +11087,7 @@ Number.EPSILON.toFixed(20)
 // "0.00000000000000022204"
 ```
 
-### 242for..of 和 for...in 是否可以直接遍历对象，为什么
+### 242、for..of 和 for...in 是否可以直接遍历对象，为什么
 
 ### 答案
 
@@ -11195,7 +11195,7 @@ for (const item of obj) {
 // 3
 ```
 
-### 243说一下什么是死锁
+### 243、说一下什么是死锁
 
 ### 死锁
 
@@ -11233,7 +11233,7 @@ for (const item of obj) {
 - 抢占资源。从一个或多个进程中抢占足够数量的资源，分配给死锁进程，以解除死锁状态。
 - 终止（撤销）进程：将一个或多个思索进程终止（撤销），直至打破循环环路，使系统从死锁状态解脱。
 
-### 244数组有哪些方法 讲讲区别跟使用场景
+### 244、数组有哪些方法 讲讲区别跟使用场景
 
 ### 数组方法
 
@@ -11298,7 +11298,7 @@ for (const item of obj) {
 - lastIndexOf
   - 返回给定元素在数组中最后一次出现的位置，如果没有出现则返回-1。
 
-### 245写出代码输出结果
+### 245、写出代码输出结果
 ```js
 var fullname = "Test1";
 var obj = {
@@ -11328,7 +11328,7 @@ Test1
 
 在函数执行上下文中，this的值取决于该函数是如何被调用的。如果this被一个引用的对象调用，那么this的值就被设置为该对象，否则被设置为全局对象或者undefined（严格模式）
 
-### 246请写出以下代码执行结果
+### 246、请写出以下代码执行结果
 ```js
 console.log(1);
 setTimeout(() => {
@@ -11462,7 +11462,7 @@ check: 4
 
 
 
-### 247已知函数 A，要求构造⼀个函数 B 继承 A
+### 247、已知函数 A，要求构造⼀个函数 B 继承 A
 ```js
 function A(name) {
   this.name = name;
@@ -11610,7 +11610,7 @@ console.log(instance1, instance2)
 
 
 
-### 248如何把真实 dom 转变为虚拟 dom，代码实现一下
+### 248、如何把真实 dom 转变为虚拟 dom，代码实现一下
 
 ### 实现方式
 
@@ -11798,7 +11798,7 @@ console.log(vroot)
 ```
 
 
-### 249说一下对原型链的理解，画一个经典的原型链图示
+### 249、说一下对原型链的理解，画一个经典的原型链图示
 
 ### 原型链
 
@@ -11815,7 +11815,7 @@ console.log(vroot)
 3. 所有的原型对象都有"constructor"属性，该属性对应创建所有指向该原型的实例的构造函数
 4. 函数对象和原型对象通过"prototype"和"constructor"属性进行相互关联
 
-### 250什么是作用域链
+### 250、什么是作用域链
 
 ### 作用域链
 
@@ -11823,7 +11823,7 @@ console.log(vroot)
 
 查找变量的时候，会先从当前上下文的环境记录中查找，如果没有找到，就会从上级执行上下文的环境记录中查找，一直找到全局上下文的环境记录。这样有多个执行上下文的环境记录构成的链表，就叫做作用域链。
 
-### 251实现一个功能，发送请求 5s 时间后，如果没有数据返回，中断请求,提示错误
+### 251、实现一个功能，发送请求 5s 时间后，如果没有数据返回，中断请求,提示错误
 
 ### 代码实现
 
@@ -11885,7 +11885,7 @@ const getData = async () => {
 getData()
 ```
 
-### 252实现函数接受任意二叉树，求二叉树所有根到叶子路径组成的数字之和
+### 252、实现函数接受任意二叉树，求二叉树所有根到叶子路径组成的数字之和
 ```js
 class TreeNode{
   value:number
@@ -11952,7 +11952,7 @@ node.right.right.value = 7
 ```
 
 
-### 253实现以下代码
+### 253、实现以下代码
 ```js
 function add() {
   // your code
@@ -11995,7 +11995,7 @@ console.log(add(one(two())));  //3
 console.log(add(two(one())));  //3
 ```
 
-### 254用 Promise 封装一个 ajax
+### 254、用 Promise 封装一个 ajax
 
 ### 代码实现
 
@@ -12039,7 +12039,7 @@ const promiseAjax = function(data){
 }
 ```
 
-### 255说一下错误监控的实现，错误监控的正确使用方式，日志如何分等级
+### 255、说一下错误监控的实现，错误监控的正确使用方式，日志如何分等级
 
 ### 一、错误分类
 
@@ -12188,7 +12188,7 @@ setTimeout(() => {
 - warn 警告值息。
 - error 错误值息。
 
-### 256weak-Set、weak-Map 和 Set、Map 区别
+### 256、weak-Set、weak-Map 和 Set、Map 区别
 
 ### 一、Set & Map
 
@@ -12644,7 +12644,7 @@ logoData.timesClicked++;
     - 不能遍历，方法有get、set、has、delete
 
 
-### 257描述 DOM 事件捕获的具体流程
+### 257、描述 DOM 事件捕获的具体流程
 
 ###  一、DOM事件处理程序
 
@@ -12937,7 +12937,7 @@ const eventUtil = {
 使用事件委托只取得了一个DOM元素，添加了一个事件处理程序，减少了内存的占用，用到鼠标事件和键盘事件都可以使用事件委托，在需要的情况下，需要移除事件处理程序
 
 
-### 258Promise 链式调用如何实现
+### 258、Promise 链式调用如何实现
 
 ### Promise 链式调用
 
@@ -13107,7 +13107,7 @@ const eventUtil = {
   }
 ```
 
-### 259gennerator yield 的作用
+### 259、gennerator yield 的作用
 
 ### Generator
 
@@ -13214,7 +13214,7 @@ console.log(result);   // "foo"
 
 
 
-### 260cros 的简单请求和复杂请求的区别
+### 260、cros 的简单请求和复杂请求的区别
 
 ### CORS
 
@@ -13288,7 +13288,7 @@ CORS可以分成两种：
 
 通过caniuse.com得知，目前大部分Modern浏览器已经支持完整的CORS，但IE直到IE11才完美支持，所以对于PC网站，还是建议采用其他解决方案，如果仅仅是移动端网站，大可放心使用。
 
-### 261说一下对`BigInt`的理解，在什么场景下会使用
+### 261、说一下对`BigInt`的理解，在什么场景下会使用
 
 ### BigInt
 
@@ -13359,27 +13359,27 @@ BigInt 无法使用`+`一元运算符， 也无法和 Number 一同计算
 BigInt 是一种新的基本类型，用于当整数值大于 Number 数据类型的范围时。使用 BigInt 避免整数溢出，保证计算安全。
 使用过程中要避免 BigInt 与 Number 和 `+`一元运算符同时使用。
 
-### 262改变 this 指向的方式都有哪些？
+### 262、改变 this 指向的方式都有哪些？
 
 
 
-### 263节流
+### 263、节流
 
 
 
-### 264如何实现 5 秒自动刷新一次页面(具体都有什么方法 reload 之类的)
+### 264、如何实现 5 秒自动刷新一次页面(具体都有什么方法 reload 之类的)
 
 
 
-### 265都了解哪些 ES6、ES7 的新特性，箭头函数可以被 new 吗
+### 265、都了解哪些 ES6、ES7 的新特性，箭头函数可以被 new 吗
 
 
 
-### 266说一下 JavaScript 继承都有哪些方法
+### 266、说一下 JavaScript 继承都有哪些方法
 
 
 
-### 267数组和对象转换为字符串结果
+### 267、数组和对象转换为字符串结果
 ```js
 var arry = [];
 var obj = {};
@@ -13388,7 +13388,7 @@ var obj = {};
 
 
 
-### 268请写出以下代码的打印结果
+### 268、请写出以下代码的打印结果
 ```js
 var a = {
   name: "A",
@@ -13405,7 +13405,7 @@ fn1();
 
 
 
-### 269请写出以下代码的打印结果
+### 269、请写出以下代码的打印结果
 ```js
 let int = 1;
 setTimeout(function () {
@@ -13439,19 +13439,19 @@ console.log(int);
 
 
 
-### 270请给出识别 Email 的正则表达式
+### 270、请给出识别 Email 的正则表达式
 
 
 
-### 271设计 AutoComplete 组件(又叫搜索组件、自动补全组件等)时，需要考虑什么问题？
+### 271、设计 AutoComplete 组件(又叫搜索组件、自动补全组件等)时，需要考虑什么问题？
 
 
 
-### 272null 是不是一个对象，如果是，如何判断一个对象是 null，不使用 JavaScript 提供的 api 如何进行判断
+### 272、null 是不是一个对象，如果是，如何判断一个对象是 null，不使用 JavaScript 提供的 api 如何进行判断
 
 
 
-### 273请写出以下代码执行结果
+### 273、请写出以下代码执行结果
 ```js
 var a = { x: 1 };
 var b = a;
@@ -13462,7 +13462,7 @@ console.log(b); // ?
 
 
 
-### 274请写出以下代码执行结果
+### 274、请写出以下代码执行结果
 ```js
 Function.prototype.a = () = >{alert(1)}
 Object.prototype.b = () = >{alert(2)}
@@ -13475,7 +13475,7 @@ a.b();
 
 
 
-### 275请写出以下代码执行结果
+### 275、请写出以下代码执行结果
 ```js
 let a = 0;
 console.log(a);
@@ -13488,7 +13488,7 @@ function c() {}
 
 
 
-### 276请写出以下代码执行结果
+### 276、请写出以下代码执行结果
 ```js
 var x = 10;
 function a(y) {
@@ -13504,7 +13504,7 @@ a(20);
 
 
 
-### 277请写出以下代码执行结果
+### 277、请写出以下代码执行结果
 ```js
 [1, 2, 3, 4, 5].map(parselnt);
 // 写出执行结果
@@ -13512,7 +13512,7 @@ a(20);
 
 
 
-### 278请写出以下代码执行结果
+### 278、请写出以下代码执行结果
 ```js
 typeof typeof typeof [];
 // 写出执行结果
@@ -13520,43 +13520,43 @@ typeof typeof typeof [];
 
 
 
-### 279实现一个函数柯里化
+### 279、实现一个函数柯里化
 
 
 
-### 280请实现`$on,$emit`
+### 280、请实现`$on,$emit`
 
 
 
-### 281手写实现 sleep 函数
+### 281、手写实现 sleep 函数
 
 
 
-### 282请写出原生 js 如何设置元素高度
+### 282、请写出原生 js 如何设置元素高度
 
 
 
-### 283换行字符串格式化
+### 283、换行字符串格式化
 
 
 
-### 284输入一个日期 返回几秒前、几小时前、几天前、几月前
+### 284、输入一个日期 返回几秒前、几小时前、几天前、几月前
 
 
 
-### 285将 153812.7 转化为 153,812.7
+### 285、将 153812.7 转化为 153,812.7
 
 
 
-### 286valueOf 与 toString 的区别
+### 286、valueOf 与 toString 的区别
 
 
 
-### 287怎么判断是一个空对象
+### 287、怎么判断是一个空对象
 
 
 
-### 288请写出下面代码的执行结果
+### 288、请写出下面代码的执行结果
 ```js
 setTimeout(() => {
   console.log(0);
@@ -13580,27 +13580,27 @@ new Promise((res) => res()).then(() => {
 
 
 
-### 289setTimeout 与 setInterval 区别
+### 289、setTimeout 与 setInterval 区别
 
 
 
-### 290项目中如何应用数据结构
+### 290、项目中如何应用数据结构
 
 
 
-### 291闭包的核心是什么
+### 291、闭包的核心是什么
 
 
 
-### 292介绍事件冒泡、事件代理、事件捕获，以及它们的关系
+### 292、介绍事件冒泡、事件代理、事件捕获，以及它们的关系
 
 
 
-### 293promise 的状态有哪些
+### 293、promise 的状态有哪些
 
 
 
-### 294async、await 如何进行错误捕获
+### 294、async、await 如何进行错误捕获
 
 
 ### 错误捕获方式
@@ -13653,7 +13653,7 @@ export default function errorHanlder(promise) {
 
 
 
-### 295请写出一下代码的打印结果
+### 295、请写出一下代码的打印结果
 ```js
 function a(obj) {
   obj.a = 2;
@@ -13719,7 +13719,7 @@ js 传递值的方式是按值传递，如果传递的是基本数据类型，�
   console.log(a(obj) == obj);    // false 指向不同地址
 ```
 
-### 296请写出下面代码的执行结果
+### 296、请写出下面代码的执行结果
 ```js
 function Foo() {
   getName = function () {
@@ -13760,7 +13760,7 @@ new Foo().getName();
 ```
 
 
-### 297修改以下代码，使得最后⼀⾏代码能够输出数字 0-9（最好能给多种答案）
+### 297、修改以下代码，使得最后⼀⾏代码能够输出数字 0-9（最好能给多种答案）
 ```js
 var arrys = [];
 for (var i = 0; i < 10; i++) {
@@ -13819,7 +13819,7 @@ for (var i = 0; i < 10; i++) {
 ```
 
 
-### 298请只用数组方法和 Math.random()在一条语句的情况下，实现生成给定位数的随机数组，例如生成 10 位随机数组[1.1,102.1,2,3,8,4,90,123,11,123],数组内数字随机生成。
+### 298、请只用数组方法和 Math.random()在一条语句的情况下，实现生成给定位数的随机数组，例如生成 10 位随机数组[1.1,102.1,2,3,8,4,90,123,11,123],数组内数字随机生成。
 
 
 ### 代码实现
@@ -13831,7 +13831,7 @@ Array.from({length:n}, () => Math.random()*10)
 Array.from({length:10}, () => Math.random()*10)
 ```
 
-### 299实现一个 setter 方法
+### 299、实现一个 setter 方法
 ```js
 let setter = function (conten, key, value) {
   // your code
@@ -13948,7 +13948,7 @@ setter(n, "a.b.bx", 1);
 console.log(n.a.b.bx); //1
 ```
 
-### 300要求⽤不同⽅式对 A 进⾏改造实现 A.name 发⽣变化时⽴即执⾏ A.getName
+### 300、要求⽤不同⽅式对 A 进⾏改造实现 A.name 发⽣变化时⽴即执⾏ A.getName
 ```js
 /*
 	已知对象A = {name: 'sfd', getName: function(){console.log(this.name)}},
@@ -14020,7 +14020,7 @@ const A = new Proxy(_A, {
 })
 ```
 
-### 301说一下对于堆栈的理解
+### 301、说一下对于堆栈的理解
 
 
 ### 一、理解
@@ -14040,7 +14040,7 @@ const A = new Proxy(_A, {
 - 栈内存存储的是基础数据类型，并且是按值访问，因为栈是一块连续的内存区域，以**后进先出**的原则存储调用的，所以是连续存储的。
 - 栈的回收是系统控制实现的。
 
-### 302说一下`module.exports`和`exports`的区别，`export`和`export default`的区别
+### 302、说一下`module.exports`和`exports`的区别，`export`和`export default`的区别
 
 
 ### 一、区别
@@ -14124,7 +14124,7 @@ console.log(e2);  // export 2 modified
 
 
 
-### 303promise 跟 async await 的区别，使用场景  
+### 303、promise 跟 async await 的区别，使用场景  
 
 
 ### 一、区别
@@ -14156,7 +14156,7 @@ console.log(e2);  // export 2 modified
 1. Promise 提供的工具函数对应的场景，如 Promise.all 并行执行一组 Promise
 2. async/await 避免了繁杂的 Promise 链式调用，且更加语义化，推荐使用 async/await 
 
-### 304在 map 中和 for 中调用异步函数的区别
+### 304、在 map 中和 for 中调用异步函数的区别
 
 
 ### map & for
@@ -14273,7 +14273,7 @@ function getData() {
 // data
 ```
 
-### 305用原生 js 实现自定义事件
+### 305、用原生 js 实现自定义事件
 
 
 ### JS 自定义事件
@@ -14367,7 +14367,7 @@ EventTarget.prototype = {
 };
 ```
 
-### 306在 ES6 中有哪些解决异步的方法
+### 306、在 ES6 中有哪些解决异步的方法
 
 
 ### ES6中可用的异步方法
@@ -14486,7 +14486,7 @@ const asyncReadFile = async function () {
 asyncReadFile();
 ```
 
-### 307实现 bind 方法，不能使用 call、apply、bind
+### 307、实现 bind 方法，不能使用 call、apply、bind
 
 
 ### bind 
@@ -14539,7 +14539,7 @@ Function.prototype.mybind = function (context) {
 }
 ```
 
-### 308请实现一个 cacheRequest 方法，保证发出多次同一个 ajax 请求时都能拿到数据，而实际上只发出一次请求
+### 308、请实现一个 cacheRequest 方法，保证发出多次同一个 ajax 请求时都能拿到数据，而实际上只发出一次请求
 
 
 
@@ -14597,7 +14597,7 @@ setTimeout(()=>{
 },4000)
 ```
 
-### 309实现一个函数将中文数字转成数字
+### 309、实现一个函数将中文数字转成数字
 
 
 
@@ -14800,7 +14800,7 @@ function transform(str) {
 console.log(transform('一十二亿三千零九十六万三千八百九十七'))
 ```
 
-### 310说一下对面向对象的理解，面向对象有什么好处
+### 310、说一下对面向对象的理解，面向对象有什么好处
 
 可以理解为在做一件事时是：“该让谁来做”。那个谁就是对象，他要怎么做是他自己的事，最后就是一群对象合力把事情做好。相比较于面向过程的“步骤化”分析问题，面向对象则是“功能化”分析问题，其优点体现在：
 
@@ -14810,13 +14810,13 @@ console.log(transform('一十二亿三千零九十六万三千八百九十七'))
 
 以上的优点来源于面向对象的三大特征：封装、继承和多态。
 
-### 3111000*1000 的画布，上面有飞机、子弹，如何划分区域能够更有效的做碰撞检测，类似划分区域大小与碰撞检测效率的算法，说一下大致的思路
+### 311、1000*1000 的画布，上面有飞机、子弹，如何划分区域能够更有效的做碰撞检测，类似划分区域大小与碰撞检测效率的算法，说一下大致的思路
 
 **大致思路**
 
 飞机按照图形中心展开一个坐标序列对应小方块，然后检测的是对应子弹在小方块的覆盖，小方块按照之前说的划分区域可以是`1*1 2*2`的,具体看想要的精度是多少
 
-### 312请实现如下的函数
+### 312、请实现如下的函数
 ```js
 /*
 	可以批量请求数据，所有的 URL 地址在 urls 参数中，
@@ -14919,7 +14919,7 @@ const callback = () => {
 parallelFetch(urls, max, callback);
 ```
 
-### 313怎样判断一个对象是否是数组，如何处理类数组对象
+### 313、怎样判断一个对象是否是数组，如何处理类数组对象
 
 #### 判断数组方式
 
@@ -14984,7 +14984,7 @@ function toArray(s){
 
 
 
-### 314实现输出一个十六进制的随机颜色(#af0128a)
+### 314、实现输出一个十六进制的随机颜色(#af0128a)
 
 #### 代码实现
 
@@ -15044,7 +15044,7 @@ function randomColor(){
 const randomColor = () => color = '#' + Math.random().toString(16).substr(-6);
 ```
 
-### 315手写代码实现`kuai-shou-front-end=>KuaiShouFrontEnd`
+### 315、手写代码实现`kuai-shou-front-end=>KuaiShouFrontEnd`
 
 #### 代码实现
 
@@ -15115,7 +15115,7 @@ console.log(transform("kuai-shou-front-end", "-"))
 
 
 
-### 316如何实现按需加载
+### 316、如何实现按需加载
 
 #### 什么是按需加载
 
@@ -15209,7 +15209,7 @@ output: {
 
 
 
-### 317类设计：使用面相对象设计一个停车场管理系统
+### 317、类设计：使用面相对象设计一个停车场管理系统
 ```js
 /*
  *题目要求
@@ -15357,7 +15357,7 @@ car4.inPark(park)
 console.log(park.parkSites)
 ```
 
-### 318说一说 promise，有几个状态，通过 catch 捕获到 reject 之后，在 catch 后面还能继续执行 then 方法嘛，如果能执行执行的是第几个回调函数
+### 318、说一说 promise，有几个状态，通过 catch 捕获到 reject 之后，在 catch 后面还能继续执行 then 方法嘛，如果能执行执行的是第几个回调函数
 
 #### Promise
 
@@ -15414,7 +15414,7 @@ Promise.reject(2)
 ```
 结果会打印：catch1、then1、then2
 
-### 319iPhone 里面 Safari 上如果一个输入框 fixed 绝对定位在底部，当软键盘弹出的时候会有什么问题，如何解决
+### 319、iPhone 里面 Safari 上如果一个输入框 fixed 绝对定位在底部，当软键盘弹出的时候会有什么问题，如何解决
 
 #### ios下fixed失效问题
 
@@ -15517,7 +15517,7 @@ window.addEventListener('focusout', function(){
 
 
 
-### 320讲一下 import 的原理，与 require 有什么不同
+### 320、讲一下 import 的原理，与 require 有什么不同
 
 #### import原理(实际上就是ES6 module的原理)
 
@@ -15553,7 +15553,7 @@ console.log('after', modA.a); // 还是1
 
 而ES6模块则不同，import导入是在JS引擎对脚步静态分析时确定，获取到的是一个只读引用。等脚本增长运行时，会根据这个引用去对应模块中取值。所以引用对应的值改变时，其导入的值也会变化
 
-### 321setTimeout 有什么缺点，和 requestAnimationFrame 有什么区别
+### 321、setTimeout 有什么缺点，和 requestAnimationFrame 有什么区别
 
 #### 1.setTimeout
 
@@ -15576,7 +15576,7 @@ function step(timestamp) {
 window.requestAnimationFrame(step);
 ```
 
-### 322移动设备安卓与 iOS 的软键盘弹出的处理方式有什么不同
+### 322、移动设备安卓与 iOS 的软键盘弹出的处理方式有什么不同
 
 ### 软键盘在Android和IOS苹果上面的表现
 
@@ -15656,7 +15656,7 @@ for (var i = 0; i < $inputs.length; i++) {
 }
 ```
 
-### 323文件上传如何做断点续传
+### 323、文件上传如何做断点续传
 
 ### 答案
 
@@ -16260,7 +16260,7 @@ module.exports = class {
 ```
 
 
-### 324实现一个方法判断 html 中的标签是否闭合
+### 324、实现一个方法判断 html 中的标签是否闭合
 
 ### 答案
 
@@ -16302,7 +16302,7 @@ checkHtml("<img>") // true
 ```
 
 
-### 325箭头函数和普通函数的区别
+### 325、箭头函数和普通函数的区别
 
 ### 答案
 
@@ -16316,7 +16316,7 @@ checkHtml("<img>") // true
 > ES6 为 new 命令引入了一个 new.target 属性，该属性一般用在构造函数之中，返回 new 命令作用于的那个构造函数。如果构造函数不是通过 new 命令或 Reflect.construct()调用的，new.target 会返回 undefined，因此这个属性可以用来确定构造函数是怎么调用的）。包括 super 也不存在以及原型 prototype=>因为在执行 new 的时候需要将函数的原型赋值给实例对象的原型属性。
 
 
-### 326手写实现 Array.flat()
+### 326、手写实现 Array.flat()
 
 ### 答案
 
@@ -16388,7 +16388,7 @@ console.log(arr.flat(3))
 ```
 
 
-### 327什么是深拷贝，和浅拷贝有什么区别，动手实现一个深拷贝
+### 327、什么是深拷贝，和浅拷贝有什么区别，动手实现一个深拷贝
 
 ### 答案
 
@@ -16616,7 +16616,7 @@ console.log(deepObj)
 ```
 
 
-### 328给定起止日期，返回中间的所有月份
+### 328、给定起止日期，返回中间的所有月份
 ```js
 // 输入两个字符串 2018-08  2018-12
 // 输出他们中间的月份 [2018-10, 2018-11]
@@ -16647,7 +16647,7 @@ const formatDate = (date) => {
 console.log(getMonths('2018-08', '2018-12'))
 ```
 
-### 329请写一个函数，输出出多级嵌套结构的 Object 的所有 key 值
+### 329、请写一个函数，输出出多级嵌套结构的 Object 的所有 key 值
 ```js
 var obj = {
   a: "12",
@@ -16682,7 +16682,7 @@ function getAllKey(obj) {
 getAllKey(obj)
 ```
 
-### 330es5 实现 isInteger
+### 330、es5 实现 isInteger
 
 ### 代码实现
 
@@ -16726,7 +16726,7 @@ function isInteger(x) {
 
 
 
-### 331给定一个数组，按找到每个元素右侧第一个比它大的数字，没有的话返回-1 规则返回一个数组
+### 331、给定一个数组，按找到每个元素右侧第一个比它大的数字，没有的话返回-1 规则返回一个数组
 ```js
 /*
  *示例：
@@ -16805,7 +16805,7 @@ console.log(firstBiggerItem(T));
 
 
 
-### 332怎样用 css 实现一个弹幕的效果，动手实现一下
+### 332、怎样用 css 实现一个弹幕的效果，动手实现一下
 
 ### 代码实现
 
@@ -17015,7 +17015,7 @@ console.log(firstBiggerItem(T));
   </script>
 ```
 
-### 333动手实现一个 repeat 方法
+### 333、动手实现一个 repeat 方法
 ```js
 function repeat(func, times, wait) {
   // TODO
@@ -17064,7 +17064,7 @@ function repeat (func, times, wait) {
 }
 ```
 
-### 334说一下 GC
+### 334、说一下 GC
 
 ### 一、常用的垃圾回收机制
 
@@ -17237,7 +17237,7 @@ scavenge算法,mark-sweep及mark-compact都会导致stop-the-world（全停顿�
 
 
 
-### 335简单封装一个异步 fecth，使用 async await 的方式来使用
+### 335、简单封装一个异步 fecth，使用 async await 的方式来使用
 
 ### 一、基本操作
 
@@ -17335,7 +17335,7 @@ class EasyHttp{
 
 
 
-### 336随便打开一个网页，用 JavaScript 打印所有以 s 和 h 开头的标签，并计算出标签的种类
+### 336、随便打开一个网页，用 JavaScript 打印所有以 s 和 h 开头的标签，并计算出标签的种类
 
 ## 代码实现
 
@@ -17355,11 +17355,11 @@ console.log(elObj)
 ```
 
 
-### 337大数计算如何实现
+### 337、大数计算如何实现
 
 
 
-### 338写出输出结果
+### 338、写出输出结果
 ```js
 function Foo() {
   getName = function () {
@@ -17392,27 +17392,27 @@ new new Foo().getName(); // ？
 
 
 
-### 339是否用过 restful 接口，和其他风格的有什么区别
+### 339、是否用过 restful 接口，和其他风格的有什么区别
 
 
 
-### 340说一下 get、post、put 的区别
+### 340、说一下 get、post、put 的区别
 
 
 
-### 341justify-content:space-between around 有什么区别
+### 341、justify-content:space-between around 有什么区别
 
 
 
-### 342实现 Promise.then
+### 342、实现 Promise.then
 
 
 
-### 343平时在项目开发中都做过哪些前端性能优化
+### 343、平时在项目开发中都做过哪些前端性能优化
 
 
 
-### 344输入两个字符串，输出他们中间的月份
+### 344、输入两个字符串，输出他们中间的月份
 ```js
 // 给两个数组 [A1,A2,B1,B2,C1,C2,D1,D2] [A,B,C,D]
 // 输出 [A1,A2,A,B1,B2,B,C1,C2,C,D1,D2,D]
@@ -17420,7 +17420,7 @@ new new Foo().getName(); // ？
 
 
 
-### 345按要求实现一个 sum 函数
+### 345、按要求实现一个 sum 函数
 ```js
 const a = sum(); // => a === 0
 const b = sum(); // => b === 2
@@ -17430,7 +17430,7 @@ const k = sum(n1)...(nk) // k === n1 + n2 + ... + nk
 
 
 
-### 346写出代码执行结果
+### 346、写出代码执行结果
 ```js
 async function async1() {
   console.log("async1 start");
@@ -17487,7 +17487,7 @@ setTimeout
 - 微任务队列执行完毕，现在开始执行宏任务队列
 - setTimeout
 
-### 347设计一个 Student 组件，实现输入姓名性别成绩（这三个必填），还有几个不是必填的属性，要设置默认值，点击弹出成绩
+### 347、设计一个 Student 组件，实现输入姓名性别成绩（这三个必填），还有几个不是必填的属性，要设置默认值，点击弹出成绩
 
 
 ### 代码实现
@@ -17531,7 +17531,7 @@ const Student = () => {
 export default Student;
 ```
 
-### 348versions 是一个项目的版本号列表，因多人维护，不规则，动手实现一个版本号处理函数
+### 348、versions 是一个项目的版本号列表，因多人维护，不规则，动手实现一个版本号处理函数
 ```js
 var versions = ["1.45.0", "1.5", "6", "3.3.3.3.3.3.3"];
 // 要求从小到大排序，注意'1.45'比'1.5'大
@@ -17560,7 +17560,7 @@ function sortVersion(list){
 sortVersion(['1.0.0', '1.2.3.4.5','2.12.1', '0.18.1','3.3.2','0.18.1'])
 ```
 
-### 349设计一个函数，奇数次执行的时候打印 1，偶数次执行的时候打印 2
+### 349、设计一个函数，奇数次执行的时候打印 1，偶数次执行的时候打印 2
 
 
 ### 代码实现
@@ -17573,7 +17573,7 @@ const fn = () => {
 fn.count = 1
 ```
 
-### 350用尽量短的代码实现一个 arrary 的链式操作，将数组中的大于 10 的值进行一个累加
+### 350、用尽量短的代码实现一个 arrary 的链式操作，将数组中的大于 10 的值进行一个累加
 
 
 ### 代码实现
@@ -17595,7 +17595,7 @@ fn.count = 1
 eval([1,2,3,4,5,10,12,13].filter(item=>item > 10).join('-').replace('-','+'));
 ```
 
-### 351var、let、const 的区别
+### 351、var、let、const 的区别
 
 
 ### 一、简洁版
@@ -17699,7 +17699,7 @@ func(); // 报错“Missing initializer in const declaration”
 ```
 
 
-### 352怎么理解 to B 和 to C 的业务
+### 352、怎么理解 to B 和 to C 的业务
 
 
 ### 一、B 和 C 的含义
