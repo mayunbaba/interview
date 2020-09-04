@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 声明一个对象
+    const banji = {
+      name: "终极一班",
+      stus: [
+        'xiaoming',
+        'xiaoning',
+        'xiaotian',
+        'knight',
+      ],
+      [Symbol.iterator]() {
+        // 索引变量
+        let index = 0;
+        return {
+          next: () => {
+            if (index < this.stus.length) {
+              const result = {value:this.stus[index],done:false};
+              // 下标自增
+              index++;
+              return result;
+            }else{
+              return {value:undefined,done:true}
+            }
+            
+          }
+        }
+      }
+    };
+    for (let v of banji) {
+      console.log(v)
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let s = Symbol();
+    console.log(s,typeof s);
+
+    let s2 = Symbol('尚硅谷');
+    console.log(s2);
+
+    let s3 =  Symbol('尚硅谷');
+    console.log(s2 == s3);
+
+    let s4 = Symbol.for('尚硅谷');
+    let s5 = Symbol.for('尚硅谷');
+    console.log(s4 == s5);
+
+    // symbol不能运算
+
+    // USONB 7中数据类型
+    // u undefied
+    // s string symbol
+    // o object
+    // n null number
+    // b boolean
+
+    let game = {
+      up(){
+        console.log('up');
+      },
+      down(){
+        console.log('down');
+      }
+    };
+    let methods = {
+      up:Symbol(),
+      down:Symbol()
+    };
+
+    game[methods.up] = function(){
+      console.log(`上升`)
+    }
+
+    game[methods.down] = function(){
+      console.log(`下降`)
+    }
+    game['up']();
+    game[methods.up]();
+
+    let youxi = {
+      name:"狼人杀",
+      [Symbol('say')]:function(){
+        console.log('say');
+      },
+      [Symbol('zibao')]:function(){
+
+      },
+    }
+    console.log(youxi);
+    
+  </script>
+</body>
+</html>
