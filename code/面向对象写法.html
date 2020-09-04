@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 工厂模式
+    function person(name, age, job) {
+      var o = {};
+      o.name = name;
+      o.age = age;
+      o.job = job;
+      o.sayName = function () {
+        console.log(this.name);
+      }
+      return o;
+    }
+    var demo = person('wh', 26, 'FE');
+    console.log(demo);
+
+
+    // 构造函数模式
+    function Person2(name, age) {
+      this.name = name;
+      this.age = age;
+      this.sayName = function () {
+        console.log(this.name);
+      }
+    }
+
+    var demo2 = new Person2('wh', 26);
+    console.log(demo2);
+
+
+    // 原型模式
+    function Person3() { }
+    Person3.prototype = {
+      name: 'wh',
+      age: 25,
+      sayName: function () {
+        console.log(this.name);
+      }
+    }
+    var demo3 = new Person3();
+    demo3.sayName();
+    console.log(demo3);
+
+
+    // 组合使用构造函数和原型模式
+    function Person4(name, age, job) {
+      this.name = name;
+      this.age = age;
+      this.job = job;
+    }
+    Person4.prototype = {
+      sayName: function () {
+        console.log(this.name);
+      }
+    }
+    var demo4 = new Person4('wh', 26, 'FE');
+    console.log(demo4);
+
+
+    // 借用构造函数继承
+    function wenda(){
+      this.money = [1,2,3];
+    }
+
+    function sicong(){
+      wenda.call(this);
+    }
+
+    var sc = new sicong();
+    sc.money.push(666);
+    console.log(sc);
+
+    // 将原型链和借用构造函数的技术组合起来一起用，好处是既能实现函数的复用，又能保证每个实例有自己的属性。
+    function SuperType(name){
+      this.name = name;
+      this.color = ['red','blue'];
+    }
+    SuperType.prototype = {
+      sayName:function(){
+        console.log(this.name);
+      }
+    }
+
+    function SubType(name,age){
+      SuperType.call(this,name); //继承属性(call只能继承属性，原型链中的方法无法继承)
+      this.age = age;
+    }
+    var demo5 = new SubType('wh',26);
+    console.log(demo5);
+    // demo5.sayName();
+
+    SubType.prototype = new SuperType(); //继承方法
+    var instance1 = new SubType('wh',26);
+    instance1.sayName();
+        
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const PENDING = 'pending'
+    const RESOLVED = 'resolved'
+    const REJECTED = 'rejected'
+
+    function MyPromise(fn) {
+      const that = this;
+      that.state = PENDING;
+      that.value = null;
+      that.resolvedCallbacks = [];
+      that.rejectedCallbacks = [];
+      // 待完善 resolve 和 reject 函数
+      // 待完善执行 fn 函数
+
+    }
+
+    function resolve(value) {
+      if (that.state === PENDING) {
+        that.state = RESOLVED;
+        that.value = value;
+        that.resolvedCallbacks.map(cb => cd(that.value))
+      }
+    }
+    function reject(value) {
+      if (that.state === PENDING) {
+        that.state = REJECTED;
+        that.value = value;
+        that.rejectedCallbacks.map(cb => (that.value))
+      }
+    }
+
+    try {
+      fn(resolve, reject)
+    } catch (e) {
+      reject(e)
+    }
+
+
+    new MyPromise(resolve => {
+      setTimeout(() => {
+        resolve(1);
+      }, 2000);
+    })
+      .then(res1 => {
+        console.log(res1);
+        return 2;
+      })
+      .then(res2 => console.log(res2));
+  </script>
+</body>
+
+</html>

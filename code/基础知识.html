@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.log(aUndefined);
+    console.log(a);
+    function test(person) {
+      person.age = 26;
+      person = {
+        name: 'yyy',
+        age: 30,
+      }
+      return person;
+    }
+    const p1 = {
+      name: 'yck',
+      age: 25
+    }
+    const p2 = test(p1);
+    console.log(p1);   //yck 26
+    console.log(p2);  //yyy 30
+
+
+    //typeof 对于原始类型来说，除了 null 都可以显示正确的类型
+    typeof 1 // 'number'
+    typeof '1' // 'string'
+    typeof undefined // 'undefined'
+    typeof true // 'boolean'
+    typeof Symbol() // 'symbol'
+
+    typeof null //object
+    typeof [] // 'object'
+    typeof {} // 'object'
+    typeof console.log // 'function'
+
+    // 对象转原始类型============
+    // 对象在转换类型的时候，会调用内置的 [[ToPrimitive]] 函数，对于该函数来说，算法逻辑一般来说如下：
+    //类型转换的原则
+    // 如果已经是原始类型了，那就不需要转换了
+    // 调用 x.valueOf()，如果转换为基础类型，就返回转换的值
+    // 调用 x.toString()，如果转换为基础类型，就返回转换的值
+    var a = {
+      valueOf() {
+        return -1
+      },
+      toString() {
+        return '1'
+      }
+    }
+    console.log(a == -1);  //证明调用了 valueOf 方法
+
+    // this问题===============
+    // 我们只需要记住，谁调用了函数，谁就是 this
+    //对于 new 的方式来说，this 被永远绑定在了 c 上面，不会被任何方式改变 this
+
+    function foo() {
+      console.log(this.a);
+    }
+    var a = 1;
+    foo(); //1
+
+    var obj = {
+      a: 2,
+      foo: foo
+    }
+    obj.foo(); // 2
+    var c = new foo();  // c.a == undefined
+
+
+    var a = { name: 'yck' };
+    var fn = function () {
+      console.log(this);
+    }
+    fn.bind(a)();
+    fn.bind().bind(a)();  //不管我们给函数 bind 几次，fn 中的 this 永远由第一次 bind 决定
+    //上下两种写法实现一样
+    // call apply bind 讲解 https://www.cnblogs.com/moqiutao/p/7371988.html
+    var fn2 = function fn1() {
+      return function () {
+        return fn.apply()
+      }.apply(a)
+    }
+    fn2();
+
+
+    var a = { name: 'yck' }
+    function foo() {
+      console.log(this.name)
+    }
+    foo.bind(a)();
+
+
+    //number 本身没有 max 方法，但是 Math 有，我们就可以借助 call 或者 apply 使用其方法。
+    var numbers = [5, 458, 120, -215];
+    var numJson = [{
+      id: 5
+    }, {
+      id: 8
+    }]
+    var maxInNumbers = Math.max.apply(Math, numbers);   //458
+    maxInNumbers = Math.max.call(Math, 5, 458, 120, -215); //458
+
+    function isArray(obj) {
+      return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+    console.log(Object.prototype.toString(numJson),9999);
+    console.log(isArray(numJson));
+
+
+    function log() {
+      var args = Array.prototype.slice.call(arguments);
+      args.unshift('(app)');
+      console.log.apply(console, args);
+    };
+    log(1, 3, 5);
+
+    // var foo = {
+    //   a: 1,
+    //   event: function () {
+    //     setTimeout(function () {
+    //       setTimeout(function () {
+    //         console.log(this);
+    //       }.bind(this), 0)
+    //     }.bind(this), 0)
+    //   }
+    // }
+    // foo.event();
+
+
+    function list() {
+      return Array.prototype.slice.call(arguments);
+    }
+    console.log(list(1, 2, 3));
+
+    abc.apply()
+    function abc(a,b,c){
+      console.log(a,b,c);
+    }
+  </script>
+</body>
+
+</html>

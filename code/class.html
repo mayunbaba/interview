@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Parent {
+      constructor(value){
+        this.value = value;
+      }
+      getValue(){
+        console.log(this.value);
+      }
+    }
+    class Child extends Parent{
+      constructor(value){
+        super(value)
+        this.value = value;
+      }
+    }
+    let child = new Child(1);
+    child.getValue();
+    console.log(child instanceof Parent);
+    
+    
+  </script>
+</body>
+
+</html>

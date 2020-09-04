@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.js"></script>
+  <script>
+    var token = '';
+    setTimeout(() => {
+      token = 67890;
+    }, 2000);
+    function checkToken() {
+      var p = new Promise(function (resolve, reject) {
+        console.log('promise');
+        if (token) {
+          resolve();
+        } else {
+          setTimeout(function () {
+            checkToken().then(resolve);
+          }, 500);
+
+        }
+      });
+      return p;
+    };
+
+    for (var i = 0; i < 4; i++) {
+      checkToken().then((res) => {
+        console.log('token');
+      }).catch((err) => {
+        console.log('no');
+      });
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

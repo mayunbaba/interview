@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const res = {
+      code: 0,
+      data: {
+        lines: '20路,301路,5路,地铁5号线,机场大巴线,107路,机场快轨',
+        lineids: 'lzbd,lwes,lxid,lwic,lwdf,ldfx,loin',
+        linedetails: {
+          lwdf: {
+            name: '机场大巴线'
+          },
+          lwes: {
+            name: '301路'
+          },
+          lwic: {
+            name: '地铁5号线'
+          },
+          ldfx: {
+            name: '107路'
+          },
+          lzbd: {
+            name: '20路'
+          },
+          lxid: {
+            name: '5路'
+          },
+          loin: {
+            name: '机场快轨'
+          }
+        }
+      }
+    }
+
+    console.log(parse(res));
+
+    function parse(res) {
+      var lines = res.data.lines.split(',');
+      var lineids = res.data.lineids.split(',');
+      var merge = lines.map(function (item, index) {
+        return { lines: item, lineids: lineids[index] }
+      }).sort(function (a, b) {
+        return lineToNums(a.lines) - lineToNums(b.lines);
+      }).reduce(function (pre, item) {
+        var obj = {};
+        // var {lineids} = item;
+        Object.defineProperty(obj, item.lineids, {
+          value: res.data.linedetails[item.lineids]
+        });
+        pre.push(obj);
+        return pre;
+      },[]);
+      return merge;
+    }
+
+    function lineToNums(lines) {
+      var nums = 0;
+      if (/路$/.test(lines)) {
+        nums = parseInt(lines);
+      } else if (/地铁/.test(lines)) {
+        nums = parseInt(lines.split('地铁')[1]) * 1000;
+      } else {
+        nums = lines.length * 1000 * 1000;
+      }
+      return parseInt(nums);
+    }
+
+    // 想要的结果是  ['bb','java','php','javascript','aa']
+    // a,b 数组有对应关系，b数组按照a数组顺序从小到大排序
+    // 计划一次循环排序，出来，并且不用for
+    var a = [3,1,5,7,0];
+    var b = ['php','java','javascript','aa','bb'];
+    function mySort(arr,linkArr){
+      for(var i = 0; i < arr.length; i ++){
+        for(var j = 0; j< arr.length-i-1; j++){
+          if(arr[j] > arr[j+1]){
+            var ele = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = ele;
+
+            var linkEle = linkArr[j];
+            linkArr[j] = linkArr[j+1];
+            linkArr[j+1] = linkEle;
+          }
+        }
+      }
+      return [arr,linkArr];
+    }
+    console.log(mySort(a,b));
+
+    Function.prototype.sortLinkArr = function(context){
+      if(typeof this !== 'function'){
+        throw new TypeError('Error')
+      }
+    }
+  </script>
+</body>
+
+</html>

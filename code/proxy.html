@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let onWatch = (obj, setBind, getLogger) => {
+      let hander = {
+        get(target, property, receiver) {
+          getLogger(target, property)
+          return Reflect.get(target, property, receiver)
+        },
+        set(target, property, value, receiver) {
+          setBind(value, property)
+          return Reflect.set(target, property, value)
+        }
+      }
+      return new Proxy(obj, hander)
+    }
+
+    let obj = { a: 1 }
+    let p = onWatch(obj,
+      (v, property) => {
+        console.log(`监听到属性${property}变为${v}`);
+      },
+      (target, property) => {
+        console.log(`'${property}' = ${target[property]}`)
+      }
+    )
+    p.a = 2;
+
+
+    const arr = [1, 2, 3]
+    const mapArray = arr.map(value => value * 2)
+    const reduceArray = arr.reduce((acc, current) => {
+      acc+=current
+      return acc
+    }, '100'); 
+    console.log(mapArray, reduceArray) // [2, 4, 6]
+  </script>
+</body>
+
+</html>

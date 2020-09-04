@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 前一项和后一项对比，一直找到最大数字
+    var arr = [5,4,3,1,2];
+    for(var i = 0; i< arr.length-1; i++){
+      for(j = 0; j < arr.length - 1 - i; j++){
+        if(arr[j] > arr[j+1]){
+          var temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+        }
+      }
+      console.log(arr);
+    }
+
+    // 数组去重
+    {
+      let arr = [1,0,0,2,9,8,3,1];
+      function unique(arr){
+        return Array.from(new Set(arr));
+      }
+      console.log(unique(arr));
+    }
+
+    // 新旧数据比较
+    // 1.先找到新旧数组的交集。
+    // 2.新数据的与交集的差集为新增
+    // 3.旧数据与交集的差集为删除数据
+
+    function clone(Obj){
+      var newObj;
+      if(Obj instanceof Array){
+        newObj = [];
+        var i = Obj.length;
+        while(i--){
+          newObj[i] = clone(Obj[i]);
+        }
+        return newObj;
+      }else if(Obj instanceof Object){
+        newObj = {};
+        for(var k in Obj){
+          newObj[k] = clone(Obj[k]);
+        }
+        return newObj
+      }else{
+        return Obj;
+      }
+    }
+    var a = [1,[2,3,4],3];
+    var b = clone(a);
+    console.log(b);
+  </script>
+</body>
+</html>

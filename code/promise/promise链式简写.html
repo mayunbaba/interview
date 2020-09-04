@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 第一步网络处理，后续不网络处理才可以简写
+    // 简化链式 promise
+    // new Promise((resolve,reject)=>{
+    //   setTimeout(()=>{
+    //     resolve('aaa')
+    //   },1000)
+    // }).then(data=>{
+    //   console.log(data);
+    //   return Promise.resolve(data+'bbb')
+    // }).then(data=>{
+    //   console.log(data);
+    //   return Promise.resolve(data+'ccc')
+    // }).then(data=>{
+    //   console.log(data);
+    // })
+
+    //最简化版本
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('aaa');
+      }, 1000)
+    }).then(data => {
+      console.log(data);
+      return data + 'bbb'
+    }).then(data => {
+      console.log(data);
+
+    })
+
+    // 异步time ms之后执行
+    function sleep(time) {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, time)
+      })
+    }
+
+    sleep(5000).then(() => {
+      console.log('5s后执行的');
+    });
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [1, 2, 3, 4, 5];
+    function getData() {
+      return new Promise((reslove, reject) => {
+        setTimeout(() => {
+          reslove('data');
+        }, 1000)
+      })
+    }
+    (async () => {
+      const result = arr.map(async () => {
+        console.log('start');
+        const data = await getData();
+        console.log(data);
+        return data;
+      });
+      console.log(result); //[promise,promise,promise,promise,promise]
+    })();
+
+    // 输出5个start
+    // 输出[promise,promise,promise,promise,promise]  
+    // 5个data
+
+    var foo = {
+      0:'js',
+      1:'node',
+      2:'ts',
+      length:3
+    }
+    // 方式一
+    Array.prototype.slice.call(arguments);
+    Array.prototype.slice.apply(arguments);
+    [].slice.call(arguments);
+
+    // 方式二
+    Array.from(arguments);
+
+    // 方式三
+    // 这种方式要求 数据结构 必须有 遍历器接口
+    [...arguments]
+
+    // 方式四
+    [].concat.apply([],arguments);
+
+    // 方式五：手动实现
+    function toArray(s){
+      var arr = [];
+      for(var i=0;i<s.length;i++){
+        arr[i] = s[i];
+      }
+      return arr;
+    }
+  </script>
+</body>
+
+</html>
