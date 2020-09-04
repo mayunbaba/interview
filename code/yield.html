@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function *show(){
+      alert('a');
+      let a = yield 12;  //返回值
+      console.log(33333);
+      alert(a);
+    }
+    let gen = show();
+    console.log(gen.next()); //第一次无法传参
+    console.log(gen.next(5));
+  </script>
+</body>
+</html>
