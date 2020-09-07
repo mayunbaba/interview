@@ -7,15 +7,23 @@
 </head>
 <body>
   <script>
-    function *show(){
-      alert('a');
-      let a = yield 12;  //返回值
-      console.log(33333);
-      alert(a);
+    function *gen(arg){
+      console.log(arg);
+      let one = yield 111;
+      console.log(one);
+      let two = yield 222;
+      console.log(two);
+      yield 333;
     }
-    let gen = show();
-    console.log(gen.next()); //第一次无法传参
-    console.log(gen.next(5));
+
+    // 执行获取迭代器对象
+    let iterator = gen('AAA');
+    console.log(iterator.next());
+    // next方法可以传入实参
+    console.log(iterator.next('bbb'));
+    console.log(iterator.next('ccc'));
+    console.log(iterator.next());
+    
   </script>
 </body>
 </html>

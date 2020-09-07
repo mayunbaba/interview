@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 声明一个set
+    let s = new Set();
+    console.log(s, typeof s);
+    //集合自动合并重复的元素
+    let s2 = new Set([1,2,3,3,4]);
+    console.log(s2.size);
+    s2.add(5);
+    console.log(s2);
+    s2.delete(3);
+    console.log(s2);
+
+
+    let arr = [1,2,3,4,5,4,3,2,1];
+
+    let result = [];
+
+    // 数组去重
+    // result = [...new Set(arr)];
+
+    // 交集
+    let arr2 = [4,5,6,5,6];
+    // let result1 = [...new Set(arr)];
+    // let result2 = new Set(arr2);
+    // result = result1.filter(item => result2.has(item));
+
+    // 并集
+    let union = [...new Set([...arr,...arr2])];
+    console.log(union)
+    // console.log(result);
+
+    // 差集
+    console.log([...new Set(arr)].filter(item => !new Set(arr2).has(item)))
+  </script>
+</body>
+</html>
