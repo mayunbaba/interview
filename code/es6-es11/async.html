@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    async function fn() {
+      return new Promise((resolve, reject) => {
+        // resolve('成功');
+        reject('失败');
+      })
+    }
+    const result = fn();
+    result.then(value => {
+      console.log(value);
+    },error =>{
+      console.warn(error);
+    })
+  </script>
+</body>
+
+</html>
